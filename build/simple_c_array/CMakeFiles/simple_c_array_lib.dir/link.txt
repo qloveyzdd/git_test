@@ -1,0 +1,2 @@
+D:\mingw64\bin\ar.exe qc libsimple_c_array_lib.a  CMakeFiles/simple_c_array_lib.dir/Private/simple_c_array_string.obj
+D:\mingw64\bin\ranlib.exe libsimple_c_array_lib.a

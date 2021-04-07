@@ -1,0 +1,45 @@
+{
+    "tasks": [
+        {
+            "type":"shell",
+            "label": "creatrBuildDir",
+            "command":"mkdir",
+            "args": [
+                "-Force",
+                "build",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+        },
+        {
+            "type":"shell",
+            "label": "cmakerun",
+            "command":"cmake",
+            "args": [
+                "-G",
+                "\\\"MinGW Makefiles\\\"",
+                ".."
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "dependsOn": [
+                "creatrBuildDir"
+            ],
+        },
+        {
+            "type":"shell",
+            "label": "makerun",
+            "command":"mingw32-make.exe",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "dependsOn": [
+                "cmakerun"
+            ],
+        },
+    ],
+    "version": "2.0.0"
+}

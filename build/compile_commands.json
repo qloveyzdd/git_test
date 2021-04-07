@@ -1,0 +1,12 @@
+[
+{
+  "directory": "D:/git_test/build",
+  "command": "D:\\mingw64\\bin\\gcc.exe   -g   -o CMakeFiles\\source.dir\\source.obj   -c D:\\git_test\\source.c",
+  "file": "D:/git_test/source.c"
+},
+{
+  "directory": "D:/git_test/build/simple_c_array",
+  "command": "D:\\mingw64\\bin\\gcc.exe   -g   -o CMakeFiles\\simple_c_array_lib.dir\\Private\\simple_c_array_string.obj   -c D:\\git_test\\simple_c_array\\Private\\simple_c_array_string.c",
+  "file": "D:/git_test/simple_c_array/Private/simple_c_array_string.c"
+}
+]
