@@ -1,99 +1,36 @@
 #include <stdio.h>
-#include<stdlib.h>
-#include"simple_c_string_algorithm\Public\string_algorith.h"
-#define INDEX_NONE -1
 
+#define INDEX_NONE -1
 
 void main()
 {
+    // char v;
+    // printf("输入：");
+    // v = getchar();
+    // printf("\r\n输出：");
+    // putchar(v);
 
-    char str[] = "xedafsfcscsrfeeeeeew asda fecvsdf";
-    char sub_str[] = "eeeee";
-    printf("%s \r\n",str);
-    remove_string(str,sub_str);
-    printf("%s \r\n",str);
-    // char data[] = "ABC";
-    // char data1[] = "ABC";
-    // char datatmp[] = {0};
+    // char v[128];
+    // printf("输入：");
+    // fgets(v,128,stdin);
+    // printf("\r\n输出：");
+    // fputs(v,stdout);
 
-    // //strcat(data,data1);
+    // FILE *fp = fopen("abc.txt","w+");
+    // fprintf(fp,"hello world......\n");
+    // fclose(fp);
 
-    // char *p = data;
+    // FILE *fp = fopen("abc.txt","r");
+    // char buff[256];
+    // fgets(buff,255,fp);
+    // printf("%s",buff);
+    // fclose(fp);
 
-
-    // printf("%d \r\n",sizeof(p));
-    // printf("%d \r\n",strlen(p));
-
-    // int b = strcmp(data,data1);
-    // char* index = strchr(data,'B');
-    // int aa = 12345678;
-    // char a[100] = "asa\nascddsa\nvsdfvfbgd\ncdvfdv\nvsbvdfb";
-    // //itoa(aa,a,2);
-    // char *p = strtok(a,"\n");
-    // while (p)
-    // {
-    //     printf("%s \r\n",p);
-    //     p=strtok(NULL,"\n");
-    // }
-    // int num =0;
-    // char temp_char;
-    // char array_char[128];
-    // while ((temp_char = getchar())!='\n')
-    // {
-    //     array_char[num++] = temp_char;
-    //     array_char[num] = '\0';
-    // }
-    // num =0;
-    // char temp_char1;
-    // char array_char1[128];
-    // while ((temp_char1 = getchar())!='\n')
-    // {
-    //     array_char1[num++] = temp_char1;
-    //     array_char1[num] = '\0';
-    // }
-    // printf("%s",array_char);
-    // printf("%s",array_char1);
-
-    // int char_len = strlen(array_char);
-    // int char_len1 = strlen(array_char1);
-    // char *qaz = array_char;
-    // char *wsx = array_char1;
-
-    // int flag =0;
-    // for (; *(wsx+char_len-1); wsx++)
-    // {
-    //     flag++;
-    //     for (qaz = array_char;*qaz == *wsx;wsx++,qaz++);
-    //     if (!*qaz)
-    //     {
-    //         printf("%d \r\n",flag);
-    //         break;
-    //     }
-        
-    // }
-    
-
-
-    // for (int i = 0; (char_len-i)<=char_len1; i++)
-    // {
-    //     if (array_char1[i]==array_char[0])
-    //     {
-    //         int j = 0;
-    //        for (; j < char_len; j++)
-    //        {
-    //            if (array_char1[i+j] != array_char[j])
-    //            {
-    //                break;
-    //            }
-    //        }
-    //        if (j == char_len)
-    //        {
-    //            printf("%d \r\n",i);
-    //            break;
-    //        }
-    //     }
-    // }
-    
-
-    // printf("%s \r\n",a);
+    FILE *fp = fopen("abc.txt","r+");
+    fseek(fp,3,0);
+    fprintf(fp,"ABCDE");
+    char buff[128];
+    fgets(buff,127,fp);
+    printf("%s",buff);
+    fclose(fp);
 }
