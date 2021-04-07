@@ -1,10 +1,19 @@
 #include <stdio.h>
 #include<stdlib.h>
+#include"simple_c_string_algorithm\Public\string_algorith.h"
+#define INDEX_NONE -1
+
 
 void main()
 {
-    char data[] = "ABC";
-    char data1[] = "ABC";
+
+    char str[] = "xedafsfcscsrfeeeeeew asda fecvsdf";
+    char sub_str[] = "eeeee";
+    printf("%s \r\n",str);
+    remove_string(str,sub_str);
+    printf("%s \r\n",str);
+    // char data[] = "ABC";
+    // char data1[] = "ABC";
     // char datatmp[] = {0};
 
     // //strcat(data,data1);
@@ -18,50 +27,50 @@ void main()
     // int b = strcmp(data,data1);
     // char* index = strchr(data,'B');
     // int aa = 12345678;
-    char a[100] = "asa\nascddsa\nvsdfvfbgd\ncdvfdv\nvsbvdfb";
-    //itoa(aa,a,2);
-    char *p = strtok(a,"\n");
-    while (p)
-    {
-        printf("%s \r\n",p);
-        p=strtok(NULL,"\n");
-    }
-    int num =0;
-    char temp_char;
-    char array_char[128];
-    while ((temp_char = getchar())!='\n')
-    {
-        array_char[num++] = temp_char;
-        array_char[num] = '\0';
-    }
-    num =0;
-    char temp_char1;
-    char array_char1[128];
-    while ((temp_char1 = getchar())!='\n')
-    {
-        array_char1[num++] = temp_char1;
-        array_char1[num] = '\0';
-    }
+    // char a[100] = "asa\nascddsa\nvsdfvfbgd\ncdvfdv\nvsbvdfb";
+    // //itoa(aa,a,2);
+    // char *p = strtok(a,"\n");
+    // while (p)
+    // {
+    //     printf("%s \r\n",p);
+    //     p=strtok(NULL,"\n");
+    // }
+    // int num =0;
+    // char temp_char;
+    // char array_char[128];
+    // while ((temp_char = getchar())!='\n')
+    // {
+    //     array_char[num++] = temp_char;
+    //     array_char[num] = '\0';
+    // }
+    // num =0;
+    // char temp_char1;
+    // char array_char1[128];
+    // while ((temp_char1 = getchar())!='\n')
+    // {
+    //     array_char1[num++] = temp_char1;
+    //     array_char1[num] = '\0';
+    // }
     // printf("%s",array_char);
     // printf("%s",array_char1);
 
-    int char_len = strlen(array_char);
-    int char_len1 = strlen(array_char1);
-    char *qaz = array_char;
-    char *wsx = array_char1;
+    // int char_len = strlen(array_char);
+    // int char_len1 = strlen(array_char1);
+    // char *qaz = array_char;
+    // char *wsx = array_char1;
 
-    int flag =0;
-    for (; *(wsx+char_len-1); wsx++)
-    {
-        flag++;
-        for (qaz = array_char;*qaz == *wsx;wsx++,qaz++);
-        if (!*qaz)
-        {
-            printf("%d \r\n",flag);
-            break;
-        }
+    // int flag =0;
+    // for (; *(wsx+char_len-1); wsx++)
+    // {
+    //     flag++;
+    //     for (qaz = array_char;*qaz == *wsx;wsx++,qaz++);
+    //     if (!*qaz)
+    //     {
+    //         printf("%d \r\n",flag);
+    //         break;
+    //     }
         
-    }
+    // }
     
 
 
