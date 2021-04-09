@@ -4,9 +4,11 @@
 #include <windows.h>
 #include "simple_c_string_algorithm\simple_c_string_algorithm.h"
 #include "simple_c_windows\simple_c_windows.h"
+#include "simple_c_array\simple_c_array.h"
 
-char git_path[260] = {0};     //git路径
-char git_log_path[260] = {0}; //log路径
+char git_path[260] = {0};          //git路径
+char git_log_path[260] = {0};      //log路径
+char git_remote_origin[260] = {0}; //获取远端路径
 
 void get_current_time(char *buf_time, int cn_zh)
 {
@@ -66,7 +68,7 @@ char *get_log_path()
         _mkdir(tmp_path); //创建log文件夹
 
         char buf[256] = {0};
-        get_current_time(buf,0);
+        get_current_time(buf, 0);
 
         strcat(tmp_path, buf);
         strcat(tmp_path, ".txt");
@@ -93,7 +95,7 @@ void log_wirte(const char *content)
     {
         char buf[1024] = {0};
         char tmp_time[128] = {0};
-        get_current_time(tmp_time,1);
+        get_current_time(tmp_time, 1);
         // remove_char_end(p, '\n');
         strcpy(buf, "[");
         strcat(buf, tmp_time);
@@ -130,6 +132,7 @@ void init_engine()
 
 void exit_engine()
 {
+    set_console_w_color(SIMPLE_BLUE, 0);
     printf("退出 \r\n");
 }
 
@@ -139,8 +142,10 @@ void engine_loop()
     int b_exit = 0;              //退出符
     while (!b_exit)
     {
+        set_console_w_color(SIMPLE_BLUE, 0);
         printf("输入指令：\r\n");
         printf("\r\n");
+        set_console_w_color(SIMPLE_GREEN, 0);
         fgets(input_buff, 1024, stdin);
         if (strstr(input_buff, "exit"))
         {
@@ -150,6 +155,31 @@ void engine_loop()
         {
             char *p = get_git_init();
             log_wirte("当前git初始化成功");
+        }
+        else if (strstr(input_buff, "git remote add origin"))
+        {
+            simple_c_string c_string;
+            init_string(&c_string);
+
+            char *p = strtok(input_buff, " ");
+            while (p !=NULL)
+            {
+                add_string(p, &c_string);
+                p = strtok(NULL, " ");
+            }
+            char *sentence = get_string(4, &c_string);
+            
+            remove_char_end(sentence, '\n');
+            strcpy(git_remote_origin, sentence);
+            char remote_time[128] = {0};
+            get_current_time(remote_time, 1);
+            char cat[256] = "远端路径为：";
+            // printf("[%s] %s %s \r\n", remote_time, cat, sentence);
+
+            strcat(cat, sentence);
+            log_wirte(cat);
+
+            destroy_string(&c_string);
         }
     }
 }

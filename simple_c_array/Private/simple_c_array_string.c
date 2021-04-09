@@ -14,13 +14,13 @@ void destroy_string(simple_c_string *array_c)
     free(array_c->data);
 }
 
-void add_string(const char* in_data, simple_c_string *array_c)
+void add_string(const char *in_data, simple_c_string *array_c)
 {
     assert(array_c);
     int index = array_c->size;
-    array_c->size += 1;
+    array_c->size++;
     array_c->data = realloc(array_c->data, array_c->size * sizeof(str_node));
-    strcpy(array_c->data[index].data,in_data);
+    strcpy(array_c->data[index].data, in_data);
 }
 
 void printf_string(simple_c_string *array_c)
@@ -30,4 +30,9 @@ void printf_string(simple_c_string *array_c)
     {
         printf("%s \r\n", array_c->data[i].data);
     }
-} 
+}
+
+char *get_string(int in_index, simple_c_string *array_c)
+{
+    return array_c->data[in_index].data;
+}

@@ -4,7 +4,14 @@
 typedef enum
 {
     SIMPLE_BLACK = 0,
-    SIMPLE_BLUE = 1,
+    SIMPLE_BLUE,
+    SIMPLE_GREEN,
+    SIMPLE_LIGHT_BLUE,
+    SIMPLE_RED,
+    SIMPLE_VIOLET,
+    SIMPLE_YELLOW,
+    SIMPLE_WHITE,
+    SIMPLE_GREY,
 } simple_console_cmd_w_color;
 
 //修改背景颜色
