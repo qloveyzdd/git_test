@@ -3,6 +3,7 @@
 #include <direct.h>
 #include <windows.h>
 #include "simple_c_string_algorithm\simple_c_string_algorithm.h"
+#include "simple_c_windows\simple_c_windows.h"
 
 char git_path[260] = {0};     //git路径
 char git_log_path[260] = {0}; //log路径
