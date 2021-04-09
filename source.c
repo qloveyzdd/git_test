@@ -7,20 +7,35 @@
 char git_path[260] = {0};     //git路径
 char git_log_path[260] = {0}; //log路径
 
-char *get_log_path()
+void get_current_time(char *buf_time, int cn_zh)
 {
-    if (git_log_path[0] == '\0') //判读log是否存在
+    char buf[256] = {0};
+    if (cn_zh == 1)
     {
-        char tmp_path[256] = {0}; //临时路径存储
-        strcat(tmp_path, ".\\log\\");
-        _mkdir(tmp_path); //创建log文件夹
-
-        // time_t now_time = time(NULL);       //获取系统时间，固定
-        // struct tm *t_tm = localtime(&now_time);//获取本地时间，固定
-        // time_t mk_time = mktime(t_tm);
-        // char *p_time = _ltoa(mk_time, buf, 10);
-
-        char buf[256] = {0};
+        SYSTEMTIME sys;
+        GetLocalTime(&sys);
+        char p_time[5];
+        _ltoa(sys.wYear, p_time, 10);
+        strcpy(buf, p_time);
+        strcat(buf, "年");
+        _ltoa(sys.wMonth, p_time, 10);
+        strcat(buf, p_time);
+        strcat(buf, "月");
+        _ltoa(sys.wDay, p_time, 10);
+        strcat(buf, p_time);
+        strcat(buf, "日");
+        _ltoa(sys.wHour, p_time, 10);
+        strcat(buf, p_time);
+        strcat(buf, "时");
+        _ltoa(sys.wMinute, p_time, 10);
+        strcat(buf, p_time);
+        strcat(buf, "分");
+        _ltoa(sys.wSecond, p_time, 10);
+        strcat(buf, p_time);
+        strcat(buf, "秒");
+    }
+    else if (cn_zh == 0)
+    {
         SYSTEMTIME sys;
         GetLocalTime(&sys);
         char p_time[5];
@@ -36,6 +51,21 @@ char *get_log_path()
         strcat(buf, p_time);
         _ltoa(sys.wSecond, p_time, 10);
         strcat(buf, p_time);
+    }
+
+    strcpy(buf_time, buf);
+}
+
+char *get_log_path()
+{
+    if (git_log_path[0] == '\0') //判读log是否存在
+    {
+        char tmp_path[256] = {0}; //临时路径存储
+        strcat(tmp_path, ".\\log\\");
+        _mkdir(tmp_path); //创建log文件夹
+
+        char buf[256] = {0};
+        get_current_time(buf,0);
 
         strcat(tmp_path, buf);
         strcat(tmp_path, ".txt");
@@ -52,6 +82,27 @@ char *get_log_path()
         }
     }
     return git_log_path;
+}
+
+void log_wirte(const char *content)
+{
+    char *p = get_log_path();
+    FILE *hfile = NULL;
+    if ((hfile = fopen(p, "a+")) != NULL)
+    {
+        char buf[1024] = {0};
+        char tmp_time[128] = {0};
+        get_current_time(tmp_time,1);
+        // remove_char_end(p, '\n');
+        strcpy(buf, "[");
+        strcat(buf, tmp_time);
+        strcat(buf, "] ");
+        strcat(buf, content);
+        strcat(buf, "\r\n");
+        printf(buf);
+        fprintf(hfile, buf);
+        fclose(hfile);
+    }
 }
 
 char *get_git_init()
@@ -72,62 +123,17 @@ char *get_git_init()
     return git_path;
 }
 
-void get_current_time(char *buf_time)
+void init_engine()
 {
-    char buf[256] = {0};
-    SYSTEMTIME sys;
-    GetLocalTime(&sys);
-    char p_time[5];
-    _ltoa(sys.wYear, p_time, 10);
-    strcpy(buf, p_time);
-    strcat(buf, "年");
-    _ltoa(sys.wMonth, p_time, 10);
-    strcat(buf, p_time);
-    strcat(buf, "月");
-    _ltoa(sys.wDay, p_time, 10);
-    strcat(buf, p_time);
-    strcat(buf, "日");
-    _ltoa(sys.wHour, p_time, 10);
-    strcat(buf, p_time);
-    strcat(buf, "时");
-    _ltoa(sys.wMinute, p_time, 10);
-    strcat(buf, p_time);
-    strcat(buf, "分");
-    _ltoa(sys.wSecond, p_time, 10);
-    strcat(buf, p_time);
-    strcat(buf, "秒");
-
-    strcpy(buf_time, buf);
 }
 
-void log_wirte(const char *content)
+void exit_engine()
 {
-    char *p = get_log_path();
-    FILE *hfile = NULL;
-    if ((hfile = fopen(p, "a+")) != NULL)
-    {
-        char buf[1024] = {0};
-        char tmp_time[128] = {0};
-        get_current_time(tmp_time);
-        // remove_char_end(p, '\n');
-        strcpy(buf, "[");
-        strcat(buf, tmp_time);
-        strcat(buf, "] ");
-        strcat(buf, content);
-        strcat(buf, "\r\n");
-        printf(buf);
-        fprintf(hfile, buf);
-        fclose(hfile);
-    }
+    printf("退出 \r\n");
 }
 
-void main()
+void engine_loop()
 {
-    // fopen(".\\log\\2021.txt","a+");
-
-    //初始化
-
-    //循环
     char input_buff[1024] = {0}; //指令输入缓存
     int b_exit = 0;              //退出符
     while (!b_exit)
@@ -141,10 +147,20 @@ void main()
         }
         else if (strstr(input_buff, "git init"))
         {
-            char *p = get_log_path();
+            char *p = get_git_init();
             log_wirte("当前git初始化成功");
         }
     }
+}
+
+void main()
+{
+    //初始化
+    init_engine();
+
+    //循环
+    engine_loop();
+
     //退出
-    printf("退出 \r\n");
+    exit_engine();
 }
