@@ -1,27 +1,43 @@
 #include <stdio.h>
 #include <io.h>
 #include <direct.h>
+#include <windows.h>
 #include "simple_c_string_algorithm\simple_c_string_algorithm.h"
 
-char git_path[260] = {0};
-char git_log_path[260] = {0};
+char git_path[260] = {0};     //git路径
+char git_log_path[260] = {0}; //log路径
 
 char *get_log_path()
 {
-    if (git_log_path[0] = '\0')
+    if (git_log_path[0] == '\0') //判读log是否存在
     {
-        char tmp_path[256] = {0};
+        char tmp_path[256] = {0}; //临时路径存储
         strcat(tmp_path, ".\\log\\");
-        _mkdir(tmp_path);
-        time_t now_time = time(NULL);
+        _mkdir(tmp_path); //创建log文件夹
 
-        struct tm *t_tm = localtime(&now_time);
-        time_t mk_time = mktime(t_tm);
+        // time_t now_time = time(NULL);       //获取系统时间，固定
+        // struct tm *t_tm = localtime(&now_time);//获取本地时间，固定
+        // time_t mk_time = mktime(t_tm);
+        // char *p_time = _ltoa(mk_time, buf, 10);
 
         char buf[256] = {0};
-        char *p_time = _ltoa(mk_time, buf, 10);
+        SYSTEMTIME sys;
+        GetLocalTime(&sys);
+        char p_time[5];
+        _ltoa(sys.wYear, p_time, 10);
+        strcpy(buf, p_time);
+        _ltoa(sys.wMonth, p_time, 10);
+        strcat(buf, p_time);
+        _ltoa(sys.wDay, p_time, 10);
+        strcat(buf, p_time);
+        _ltoa(sys.wHour, p_time, 10);
+        strcat(buf, p_time);
+        _ltoa(sys.wMinute, p_time, 10);
+        strcat(buf, p_time);
+        _ltoa(sys.wSecond, p_time, 10);
+        strcat(buf, p_time);
 
-        strcat(tmp_path, p_time);
+        strcat(tmp_path, buf);
         strcat(tmp_path, ".txt");
 
         FILE *hfile = NULL;
@@ -29,6 +45,10 @@ char *get_log_path()
         {
             strcpy(git_log_path, tmp_path);
             fclose(hfile);
+        }
+        else
+        {
+            printf("创建日志失败！！");
         }
     }
     return git_log_path;
@@ -52,9 +72,32 @@ char *get_git_init()
     return git_path;
 }
 
-char *get_current_time()
+void get_current_time(char *buf_time)
 {
-    return ctime(__TIME__);
+    char buf[256] = {0};
+    SYSTEMTIME sys;
+    GetLocalTime(&sys);
+    char p_time[5];
+    _ltoa(sys.wYear, p_time, 10);
+    strcpy(buf, p_time);
+    strcat(buf, "年");
+    _ltoa(sys.wMonth, p_time, 10);
+    strcat(buf, p_time);
+    strcat(buf, "月");
+    _ltoa(sys.wDay, p_time, 10);
+    strcat(buf, p_time);
+    strcat(buf, "日");
+    _ltoa(sys.wHour, p_time, 10);
+    strcat(buf, p_time);
+    strcat(buf, "时");
+    _ltoa(sys.wMinute, p_time, 10);
+    strcat(buf, p_time);
+    strcat(buf, "分");
+    _ltoa(sys.wSecond, p_time, 10);
+    strcat(buf, p_time);
+    strcat(buf, "秒");
+
+    strcpy(buf_time, buf);
 }
 
 void log_wirte(const char *content)
@@ -64,30 +107,29 @@ void log_wirte(const char *content)
     if ((hfile = fopen(p, "a+")) != NULL)
     {
         char buf[1024] = {0};
-
-        char *p = get_current_time();
-        remove_char_end(p, '\n');
-
+        char tmp_time[128] = {0};
+        get_current_time(tmp_time);
+        // remove_char_end(p, '\n');
         strcpy(buf, "[");
-        strcat(buf, p);
+        strcat(buf, tmp_time);
         strcat(buf, "] ");
         strcat(buf, content);
         strcat(buf, "\r\n");
-
         printf(buf);
         fprintf(hfile, buf);
-
         fclose(hfile);
     }
 }
 
 void main()
 {
+    // fopen(".\\log\\2021.txt","a+");
+
     //初始化
 
     //循环
-    char input_buff[1024] = {0};
-    int b_exit = 0;
+    char input_buff[1024] = {0}; //指令输入缓存
+    int b_exit = 0;              //退出符
     while (!b_exit)
     {
         printf("输入指令：\r\n");
@@ -103,7 +145,6 @@ void main()
             log_wirte("当前git初始化成功");
         }
     }
-
     //退出
     printf("退出 \r\n");
 }
