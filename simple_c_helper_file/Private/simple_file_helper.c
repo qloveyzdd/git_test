@@ -67,3 +67,14 @@ void find_files(const char *in_path, def_c_paths *str, bool b_brecursion)
         _findclose(hfile);
     }
 }
+
+bool create_file(const char *filename)
+{
+    FILE *f = NULL;
+    if ((f = fopen(filename, "r+") != NULL))
+    {
+        fclose(f);
+        return true;
+    }
+    return false;
+}

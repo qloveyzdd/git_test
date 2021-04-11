@@ -36,3 +36,14 @@ char *get_string(int in_index, simple_c_string *array_c)
 {
     return array_c->data[in_index].data;
 }
+
+void dismantling_string(char *in_data, const char *str_sub, simple_c_string *array_c)
+{
+    init_string(array_c);
+    char *p = strtok(in_data, str_sub);
+    while (p != NULL)
+    {
+        add_string(p, array_c);
+        p = strtok(NULL, str_sub);
+    }
+}

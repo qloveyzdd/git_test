@@ -5,10 +5,18 @@
 #include "simple_c_string_algorithm\simple_c_string_algorithm.h"
 #include "simple_c_windows\simple_c_windows.h"
 #include "simple_c_array\simple_c_array.h"
+#include "simple_c_helper_file\simple_c_helper_file.h"
 
-char git_path[260] = {0};          //git路径
-char git_log_path[260] = {0};      //log路径
-char git_remote_origin[260] = {0}; //获取远端路径
+const char git_local_cofg_file[MAX_PATH] = "C:\\local_git\\"; //配置文件路径
+
+char git_path[MAX_PATH] = {0};          //git路径
+char git_log_path[MAX_PATH] = {0};      //log路径
+char git_remote_origin[MAX_PATH] = {0}; //获取远端路径
+
+char gir_local_cofg_filename[MAX_PATH] = {0}; //配置文件名称
+
+char git_account[MAX_PATH] = {0};
+char git_password[MAX_PATH] = {0};
 
 void get_current_time(char *buf_time, int cn_zh)
 {
@@ -128,6 +136,62 @@ char *get_git_init()
 
 void init_engine()
 {
+    char cofg_path_buf[MAX_PATH] = {0};
+    _mkdir(git_local_cofg_file);
+    strcpy(cofg_path_buf, git_local_cofg_file);
+    strcat(cofg_path_buf, "git_confg.ini");
+
+    if (_access(cofg_path_buf, 0) == -1) //判断文件是否存在
+    {
+        create_file(cofg_path_buf);
+    }
+    else
+    {
+        char buf_cofg[1024 * 10] = {0};
+        FILE *f = NULL;
+        int file_size = 0;
+        if ((f = fopen(cofg_path_buf, "a")) != NULL)
+        {
+            if ((file_size = fread(buf_cofg,sizeof(char),sizeof(buf_cofg),f))>0)
+            {
+                simple_c_string c_str_sentence;
+                dismantling_string(file_size,"\n",&c_str_sentence);
+                for (int i = 0; i < c_str_sentence.size; i++)
+                {
+                    char *tmp = get_string(i,&c_str_sentence);
+                    if (strstr(tmp,"account="))
+                    {
+                        simple_c_string c_str_param;
+                        dismantling_string(tmp,"=",&c_str_param);
+                        char *value = get_string(1,&c_str_param);
+                        strcpy(git_account,value);
+                        destroy_string(&c_str_param);
+                    }
+                    else if(strstr(tmp,"password="))
+                    {
+                        simple_c_string c_str_param;
+                        dismantling_string(tmp,"=",&c_str_param);
+                        char *value = get_string(1,&c_str_param);
+                        strcpy(git_password,value);
+                        destroy_string(&c_str_param);
+                    }
+                    else if(strstr(tmp,"remote_origin="))
+                    {
+                        simple_c_string c_str_param;
+                        dismantling_string(tmp,"=",&c_str_param);
+                        char *value = get_string(1,&c_str_param);
+                        strcpy(git_remote_origin,value);
+                        destroy_string(&c_str_param);
+                    }
+                    
+                }
+                
+
+                destroy_string(&c_str_sentence);
+            }
+            
+        }
+    }
 }
 
 void exit_engine()
@@ -162,13 +226,13 @@ void engine_loop()
             init_string(&c_string);
 
             char *p = strtok(input_buff, " ");
-            while (p !=NULL)
+            while (p != NULL)
             {
                 add_string(p, &c_string);
                 p = strtok(NULL, " ");
             }
             char *sentence = get_string(4, &c_string);
-            
+
             remove_char_end(sentence, '\n');
             strcpy(git_remote_origin, sentence);
             char remote_time[128] = {0};
