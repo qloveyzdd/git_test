@@ -1,4 +1,5 @@
 #include "../Public/simple_c_array_string.h"
+#include <stdarg.h>
 
 void init_string(simple_c_string *array_c)
 {
@@ -46,4 +47,64 @@ void dismantling_string(char *in_data, const char *str_sub, simple_c_string *arr
         add_string(p, array_c);
         p = strtok(NULL, str_sub);
     }
+}
+
+int get_printf(char* buf, char* format, ...)
+{
+	int ret_num = 0;
+	va_list param_list;
+	va_start(param_list, format);
+
+	for (int i = 0; *format != '\0'; i++)
+	{
+		if (*(format - 1) != '%')
+		{
+			buf[i] = *format;
+		}
+		else
+		{
+			i--;
+			switch (*format)
+			{
+			case 'c':
+			case 'C':
+			{
+				buf[i] = va_arg(param_list, char);
+				break;
+			}
+			case 's':
+			case 'S':
+			{
+				char* p = va_arg(param_list, char*);
+				int len = strlen(p);
+				ret_num += len;
+				for (int j = 0; j < len; j++,i++)
+				{
+					buf[i] = p[j];
+				}
+				i--;
+				break;
+			}
+			case 'i':
+			case 'I':
+			{
+				char p[128] = {0};
+				_itoa(va_arg(param_list, int), p, 10);
+				int len = strlen(p);
+				ret_num += len;
+				for (int j = 0; j < len; j++,i++)
+				{
+					buf[i] = p[j];
+				}
+				i--;
+				break;
+			}
+			default:
+				break;
+			}
+		}
+		format++;
+	}
+
+	return ret_num;
 }

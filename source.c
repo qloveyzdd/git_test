@@ -15,8 +15,13 @@ char git_remote_origin[MAX_PATH] = {0}; //获取远端路径
 
 char gir_local_cofg_filename[MAX_PATH] = {0}; //配置文件名称
 
-char git_account[MAX_PATH] = {0};
-char git_password[MAX_PATH] = {0};
+typedef struct fgit_user //  用户信息
+{
+    char name[MAX_PATH];
+    char password[MAX_PATH];
+    char email[MAX_PATH];
+};
+struct fgit_user user;
 
 void get_current_time(char *buf_time, int cn_zh)
 {
@@ -152,44 +157,41 @@ void init_engine()
         int file_size = 0;
         if ((f = fopen(cofg_path_buf, "a")) != NULL)
         {
-            if ((file_size = fread(buf_cofg,sizeof(char),sizeof(buf_cofg),f))>0)
+            if ((file_size = fread(buf_cofg, sizeof(char), sizeof(buf_cofg), f)) > 0)
             {
                 simple_c_string c_str_sentence;
-                dismantling_string(file_size,"\n",&c_str_sentence);
+                dismantling_string(file_size, "\n", &c_str_sentence);
                 for (int i = 0; i < c_str_sentence.size; i++)
                 {
-                    char *tmp = get_string(i,&c_str_sentence);
-                    if (strstr(tmp,"account="))
+                    char *tmp = get_string(i, &c_str_sentence);
+                    if (strstr(tmp, "name="))
                     {
                         simple_c_string c_str_param;
-                        dismantling_string(tmp,"=",&c_str_param);
-                        char *value = get_string(1,&c_str_param);
-                        strcpy(git_account,value);
+                        dismantling_string(tmp, "=", &c_str_param);
+                        char *value = get_string(1, &c_str_param);
+                        strcpy(user.name, value);
                         destroy_string(&c_str_param);
                     }
-                    else if(strstr(tmp,"password="))
+                    else if (strstr(tmp, "password="))
                     {
                         simple_c_string c_str_param;
-                        dismantling_string(tmp,"=",&c_str_param);
-                        char *value = get_string(1,&c_str_param);
-                        strcpy(git_password,value);
+                        dismantling_string(tmp, "=", &c_str_param);
+                        char *value = get_string(1, &c_str_param);
+                        strcpy(user.password, value);
                         destroy_string(&c_str_param);
                     }
-                    else if(strstr(tmp,"remote_origin="))
+                    else if (strstr(tmp, "remote_origin="))
                     {
                         simple_c_string c_str_param;
-                        dismantling_string(tmp,"=",&c_str_param);
-                        char *value = get_string(1,&c_str_param);
-                        strcpy(git_remote_origin,value);
+                        dismantling_string(tmp, "=", &c_str_param);
+                        char *value = get_string(1, &c_str_param);
+                        strcpy(git_remote_origin, value);
                         destroy_string(&c_str_param);
                     }
-                    
                 }
-                
 
                 destroy_string(&c_str_sentence);
             }
-            
         }
     }
 }
@@ -223,33 +225,72 @@ void engine_loop()
         else if (strstr(input_buff, "git remote add origin"))
         {
             simple_c_string c_string;
-            init_string(&c_string);
+            dismantling_string(input_buff, " ", &c_string);
 
-            char *p = strtok(input_buff, " ");
-            while (p != NULL)
-            {
-                add_string(p, &c_string);
-                p = strtok(NULL, " ");
-            }
             char *sentence = get_string(4, &c_string);
-
             remove_char_end(sentence, '\n');
-            strcpy(git_remote_origin, sentence);
-            char remote_time[128] = {0};
-            get_current_time(remote_time, 1);
-            char cat[256] = "远端路径为：";
-            // printf("[%s] %s %s \r\n", remote_time, cat, sentence);
 
+            strcpy(git_remote_origin, sentence);
+
+            char cat[256] = {0};
+            strcat(cat, "远端路径为：");
             strcat(cat, sentence);
+
             log_wirte(cat);
 
             destroy_string(&c_string);
+        }
+        else if (strstr(input_buff, "git --global user.email"))
+        {
+            simple_c_string c_string;
+            dismantling_string(input_buff, " ", &c_string);
+
+            char *sentence = get_string(3, &c_string);
+            remove_char_end(sentence, '\n');
+
+            strcpy(user.email, sentence);
+
+            char cat[256] = {0};
+            strcat(cat, "email为：");
+            strcat(cat, sentence);
+
+            log_wirte(cat);
+
+            destroy_string(&c_string);
+        }
+        else if (strstr(input_buff, "git --global user.name"))
+        {
+            simple_c_string c_string;
+            dismantling_string(input_buff, " ", &c_string);
+
+            char *sentence = get_string(3, &c_string);
+            remove_char_end(sentence, '\n');
+
+            strcpy(user.name, sentence);
+
+            char cat[256] = {0};
+            strcat(cat, "name为：");
+            strcat(cat, sentence);
+
+            log_wirte(cat);
+
+            destroy_string(&c_string);
+        }
+        else if (strstr(input_buff, "ssh-keygen -t rsa -C"))
+        {
+            //openSSL RSA
         }
     }
 }
 
 void main()
 {
+    char qq[128] = {0};
+    char qaz[128] = "aedff%cvvs%scsefe%iy";
+    get_printf(qq, qaz, 'q', "qazwsx", 12);
+    printf("%s", qq);
+    printf("\r\n");
+
     //初始化
     init_engine();
 

@@ -19,4 +19,6 @@ void printf_string(simple_c_string *array_c);
 //返回某一段
 char *get_string(int in_index, simple_c_string *array_c);
 //拆分，并放入结构体
-void dismantling_string(char *in_data,const char *str_sub,simple_c_string *array_c);
+void dismantling_string(char *in_data, const char *str_sub, simple_c_string *array_c);
+//按照printf形式合并字符
+int get_printf(char *buf, char *format, ...);
