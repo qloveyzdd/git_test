@@ -285,12 +285,6 @@ void engine_loop()
 
 void main()
 {
-    char qq[128] = {0};
-    char qaz[128] = "aedff%cvvs%scsefe%iy";
-    get_printf(qq, qaz, 'q', "qazwsx", 12);
-    printf("%s", qq);
-    printf("\r\n");
-
     //初始化
     init_engine();
 

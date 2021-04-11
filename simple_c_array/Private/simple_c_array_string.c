@@ -49,7 +49,7 @@ void dismantling_string(char *in_data, const char *str_sub, simple_c_string *arr
     }
 }
 
-int get_printf(char* buf, char* format, ...)
+int get_printf(char* buf, char* format, ...)//va_arg的调取不可以低于int字节数，也不可以时浮点型
 {
 	int ret_num = 0;
 	va_list param_list;
@@ -69,7 +69,7 @@ int get_printf(char* buf, char* format, ...)
 			case 'c':
 			case 'C':
 			{
-				buf[i] = va_arg(param_list, char);
+				buf[i] = va_arg(param_list, int);
 				break;
 			}
 			case 's':
