@@ -1,0 +1,2 @@
+git init 创建仓库git remote add origin 添加远程仓库git --global user.email 添加emailgit --global user.name 添加namessh-keygen -t rsa -C 创建密钥(尚未完成)exit 退出找不到命令:git dfsf
+获取可以通过[git --help]的方式查看命令帮助退出成功！！

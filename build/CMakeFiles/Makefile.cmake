@@ -36,6 +36,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.17.0-rc3/CMakeRCCompiler.cmake"
   "CMakeFiles/3.17.0-rc3/CMakeSystem.cmake"
   "../simple_c_array/CMakeLists.txt"
+  "../simple_c_helper_file/CMakeLists.txt"
+  "../simple_c_string_algorithm/CMakeLists.txt"
+  "../simple_c_windows/CMakeLists.txt"
   )
 
 # The corresponding makefile is:
@@ -48,10 +51,16 @@ set(CMAKE_MAKEFILE_OUTPUTS
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "simple_c_array/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "simple_c_helper_file/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "simple_c_string_algorithm/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "simple_c_windows/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/source.dir/DependInfo.cmake"
   "simple_c_array/CMakeFiles/simple_c_array_lib.dir/DependInfo.cmake"
+  "simple_c_helper_file/CMakeFiles/simple_file_helper_lib.dir/DependInfo.cmake"
+  "simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm_lib.dir/DependInfo.cmake"
+  "simple_c_windows/CMakeFiles/simple_c_windows_lib.dir/DependInfo.cmake"
   )

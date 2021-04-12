@@ -152,6 +152,45 @@ simple_c_array_lib/fast:
 	$(MAKE) -f simple_c_array\CMakeFiles\simple_c_array_lib.dir\build.make simple_c_array/CMakeFiles/simple_c_array_lib.dir/build
 .PHONY : simple_c_array_lib/fast
 
+#=============================================================================
+# Target rules for targets named simple_file_helper_lib
+
+# Build rule for target.
+simple_file_helper_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_file_helper_lib
+.PHONY : simple_file_helper_lib
+
+# fast build rule for target.
+simple_file_helper_lib/fast:
+	$(MAKE) -f simple_c_helper_file\CMakeFiles\simple_file_helper_lib.dir\build.make simple_c_helper_file/CMakeFiles/simple_file_helper_lib.dir/build
+.PHONY : simple_file_helper_lib/fast
+
+#=============================================================================
+# Target rules for targets named simple_c_string_algorithm_lib
+
+# Build rule for target.
+simple_c_string_algorithm_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_string_algorithm_lib
+.PHONY : simple_c_string_algorithm_lib
+
+# fast build rule for target.
+simple_c_string_algorithm_lib/fast:
+	$(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm_lib.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm_lib.dir/build
+.PHONY : simple_c_string_algorithm_lib/fast
+
+#=============================================================================
+# Target rules for targets named simple_c_windows_lib
+
+# Build rule for target.
+simple_c_windows_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_windows_lib
+.PHONY : simple_c_windows_lib
+
+# fast build rule for target.
+simple_c_windows_lib/fast:
+	$(MAKE) -f simple_c_windows\CMakeFiles\simple_c_windows_lib.dir\build.make simple_c_windows/CMakeFiles/simple_c_windows_lib.dir/build
+.PHONY : simple_c_windows_lib/fast
+
 # target to build an object file
 source.obj:
 	$(MAKE) -f CMakeFiles\source.dir\build.make CMakeFiles/source.dir/source.obj
@@ -176,6 +215,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... simple_c_array_lib
+	@echo ... simple_c_string_algorithm_lib
+	@echo ... simple_c_windows_lib
+	@echo ... simple_file_helper_lib
 	@echo ... source
 	@echo ... source.obj
 	@echo ... source.i

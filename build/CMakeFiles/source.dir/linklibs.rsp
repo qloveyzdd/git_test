@@ -1,1 +1,1 @@
- simple_c_array/libsimple_c_array_lib.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+ simple_c_array/libsimple_c_array_lib.a simple_c_helper_file/libsimple_file_helper_lib.a simple_c_string_algorithm/libsimple_c_string_algorithm_lib.a simple_c_windows/libsimple_c_windows_lib.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

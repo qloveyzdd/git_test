@@ -235,7 +235,7 @@ void init_engine()
 void exit_engine()
 {
     set_console_w_color(SIMPLE_BLUE, 0);
-    printf("退出 \r\n");
+    log_success("退出成功！！");
 }
 
 void engine_loop()
@@ -315,6 +315,21 @@ void engine_loop()
         else if (strstr(input_buff, "ssh-keygen -t rsa -C"))
         {
             //openSSL RSA
+            log_error("ssh-keygen -t rsa -C 该指令尚未完成");
+        }
+        else if (strstr(input_buff, "git --help"))
+        {
+            log_log("git init 创建仓库");
+            log_log("git remote add origin 添加远程仓库");
+            log_log("git --global user.email 添加email");
+            log_log("git --global user.name 添加name");
+            log_log("ssh-keygen -t rsa -C 创建密钥(尚未完成)");
+            log_log("exit 退出");
+        }
+        else
+        {
+            log_warning("找不到命令:%s",input_buff);
+            log_log("获取可以通过[git --help]的方式查看命令帮助");
         }
     }
 }
