@@ -15,12 +15,27 @@ char git_remote_origin[MAX_PATH] = {0}; //获取远端路径
 
 char gir_local_cofg_filename[MAX_PATH] = {0}; //配置文件名称
 
+typedef enum e_error
+{
+    GIT_SUCCESS = 0,
+    GIT_LOG,
+    GIT_WARNING,
+    GIT_ERROR,
+};
+
 typedef struct fgit_user //  用户信息
 {
     char name[MAX_PATH];
     char password[MAX_PATH];
     char email[MAX_PATH];
 };
+
+void log_wirte(enum e_error error, char *format, ...);
+#define log_log(...) log_wirte(GIT_LOG, __VA_ARGS__)
+#define log_success(...) log_wirte(GIT_SUCCESS, __VA_ARGS__)
+#define log_warning(...) log_wirte(GIT_WARNING, __VA_ARGS__)
+#define log_error(...) log_wirte(GIT_ERROR, __VA_ARGS__)
+
 struct fgit_user user;
 
 void get_current_time(char *buf_time, int cn_zh)
@@ -94,28 +109,49 @@ char *get_log_path()
         }
         else
         {
-            printf("创建日志失败！！");
+            log_error("创建日志失败！！");
         }
     }
     return git_log_path;
 }
 
-void log_wirte(const char *content)
+void log_wirte(enum e_error error, char *format, ...)
 {
     char *p = get_log_path();
     FILE *hfile = NULL;
     if ((hfile = fopen(p, "a+")) != NULL)
     {
+        char error_str[64] = {0};
+        switch (error)
+        {
+        case GIT_SUCCESS:
+            strcpy(error_str, "成功");
+            break;
+        case GIT_LOG:
+            strcpy(error_str, "LOG");
+            break;
+        case GIT_WARNING:
+            strcpy(error_str, "警告");
+            break;
+        case GIT_ERROR:
+            strcpy(error_str, "失败");
+            break;
+        }
+
         char buf[1024] = {0};
+        va_list args;
+        va_start(args, format);
+        vsnprintf(buf, 1024 - 1, format, args);
+        va_end(args);
+        buf[1024 - 1] = '\0';
+
         char tmp_time[128] = {0};
         get_current_time(tmp_time, 1);
-        // remove_char_end(p, '\n');
-        strcpy(buf, "[");
-        strcat(buf, tmp_time);
-        strcat(buf, "] ");
-        strcat(buf, content);
-        strcat(buf, "\r\n");
-        printf(buf);
+
+        char text_buf[1024] = {0};
+        get_printf(text_buf, "[%s][%s]%s \r\n", error_str, tmp_time, buf);
+
+        printf(text_buf);
         fprintf(hfile, buf);
         fclose(hfile);
     }
@@ -220,7 +256,7 @@ void engine_loop()
         else if (strstr(input_buff, "git init"))
         {
             char *p = get_git_init();
-            log_wirte("当前git初始化成功");
+            log_success("当前git[%s]初始化成功",p);
         }
         else if (strstr(input_buff, "git remote add origin"))
         {
@@ -236,7 +272,7 @@ void engine_loop()
             strcat(cat, "远端路径为：");
             strcat(cat, sentence);
 
-            log_wirte(cat);
+            log_success(cat);
 
             destroy_string(&c_string);
         }
@@ -254,7 +290,7 @@ void engine_loop()
             strcat(cat, "email为：");
             strcat(cat, sentence);
 
-            log_wirte(cat);
+            log_success(cat);
 
             destroy_string(&c_string);
         }
@@ -272,7 +308,7 @@ void engine_loop()
             strcat(cat, "name为：");
             strcat(cat, sentence);
 
-            log_wirte(cat);
+            log_success(cat);
 
             destroy_string(&c_string);
         }

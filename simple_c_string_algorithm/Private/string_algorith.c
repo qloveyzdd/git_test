@@ -1,4 +1,5 @@
 #include "../Public/string_algorith.h"
+#include <stdarg.h>
 //#define INDEX_NONE -1
 
 void remove_char_start(char *str, const char sub_char)
@@ -64,4 +65,64 @@ void replace_char_inline(char *str, const char sub_char_a, const char sub_char_b
         str[index] = sub_char_b;
         replace_char_inline(str, sub_char_a, sub_char_b);
     }
+}
+
+int get_printf(char *buf, char *format, ...)//va_arg的调取不可以低于int字节数，也不可以时浮点型
+{
+	int ret_num = 0;
+	va_list param_list;
+	va_start(param_list, format);
+
+	for (int i = 0; *format != '\0'; i++)
+	{
+		if (*(format - 1) != '%')
+		{
+			buf[i] = *format;
+		}
+		else
+		{
+			i--;
+			switch (*format)
+			{
+			case 'c':
+			case 'C':
+			{
+				buf[i] = va_arg(param_list, int);
+				break;
+			}
+			case 's':
+			case 'S':
+			{
+				char* p = va_arg(param_list, char*);
+				int len = strlen(p);
+				ret_num += len;
+				for (int j = 0; j < len; j++,i++)
+				{
+					buf[i] = p[j];
+				}
+				i--;
+				break;
+			}
+			case 'i':
+			case 'I':
+			{
+				char p[128] = {0};
+				_itoa(va_arg(param_list, int), p, 10);
+				int len = strlen(p);
+				ret_num += len;
+				for (int j = 0; j < len; j++,i++)
+				{
+					buf[i] = p[j];
+				}
+				i--;
+				break;
+			}
+			default:
+				break;
+			}
+		}
+		format++;
+	}
+
+	return ret_num;
 }

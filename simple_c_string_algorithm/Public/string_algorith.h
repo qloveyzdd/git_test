@@ -10,3 +10,5 @@ int find_string(char *str, const char *sub_str);
 void remove_string_start(char *str, const char *sub_str);
 //在字符串中替换出现的单字符
 void replace_char_inline(char *str, const char sub_char_a, const char sub_char_b);
+//按照printf形式合并字符
+int get_printf(char *buf, char *format, ...);
