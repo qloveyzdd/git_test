@@ -8,7 +8,6 @@
 #include "simple_c_array\simple_c_array.h"
 #include "simple_c_helper_file\simple_c_helper_file.h"
 
-
 const char git_local_cofg_file[MAX_PATH] = "C:\\local_git\\"; //配置文件路径
 
 char git_path[MAX_PATH] = {0};          //git路径
@@ -144,7 +143,7 @@ void log_wirte(enum e_error error, char *format, ...)
         va_list args;
         va_start(args, format);
         vsnprintf(buf, 1024 - 1, format, args);
-        strcat(buf,"\n");
+        strcat(buf, "\n");
         va_end(args);
         buf[1024 - 1] = '\0';
 
@@ -391,12 +390,12 @@ void engine_loop()
                 find_files(sentence, &paths, true);
                 for (int i = 0; i < paths.index; i++)
                 {
-                    char buf_tmp[MAX_PATH]={0};
+                    char buf_tmp[MAX_PATH] = {0};
                     strcpy(buf_tmp, paths.paths[i]);
                     remove_string_start(buf_tmp, sentence);
                     char buf_local_path[MAX_PATH] = {0};
-                    strcpy(buf_local_path,buf_path);
-                    strcat(buf_local_path,buf_tmp);
+                    strcpy(buf_local_path, buf_path);
+                    strcat(buf_local_path, buf_tmp);
 
                     if (!(copy_file(paths.paths[i], buf_local_path)))
                     {
@@ -415,6 +414,7 @@ void engine_loop()
             log_log("git remote add origin 添加远程仓库");
             log_log("git --global user.email 添加email");
             log_log("git --global user.name 添加name");
+            log_log("git clone 复制文件到此仓库");
             log_log("ssh-keygen -t rsa -C 创建密钥(尚未完成)");
             log_log("exit 退出");
         }
