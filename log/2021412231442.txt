@@ -1,2 +1,0 @@
-ssh-keygen -t rsa -C 该指令尚未完成找不到命令:safea
-获取可以通过[git --help]的方式查看命令帮助退出成功！！

@@ -2,10 +2,12 @@
 #include <io.h>
 #include <direct.h>
 #include <windows.h>
+#include <stdbool.h>
 #include "simple_c_string_algorithm\simple_c_string_algorithm.h"
 #include "simple_c_windows\simple_c_windows.h"
 #include "simple_c_array\simple_c_array.h"
 #include "simple_c_helper_file\simple_c_helper_file.h"
+
 
 const char git_local_cofg_file[MAX_PATH] = "C:\\local_git\\"; //配置文件路径
 
@@ -142,6 +144,7 @@ void log_wirte(enum e_error error, char *format, ...)
         va_list args;
         va_start(args, format);
         vsnprintf(buf, 1024 - 1, format, args);
+        strcat(buf,"\n");
         va_end(args);
         buf[1024 - 1] = '\0';
 
@@ -256,7 +259,7 @@ void engine_loop()
         else if (strstr(input_buff, "git init"))
         {
             char *p = get_git_init();
-            log_success("当前git[%s]初始化成功",p);
+            log_success("当前git[%s]初始化成功", p);
         }
         else if (strstr(input_buff, "git remote add origin"))
         {
@@ -317,6 +320,95 @@ void engine_loop()
             //openSSL RSA
             log_error("ssh-keygen -t rsa -C 该指令尚未完成");
         }
+        // else if (strstr(input_buff, "git clone"))
+        // {
+        //     simple_c_string c_string;
+        //     dismantling_string(input_buff, " ", &c_string);
+
+        //     char *sentence = get_string(2, &c_string);
+        //     remove_char_end(sentence, '\n');
+
+        //     simple_c_string c_file;
+        //     if (strstr(sentence, "\\"))
+        //     {
+        //         dismantling_string(sentence, "\\", &c_file);
+        //     }
+        //     else if (strstr(sentence, "/"))
+        //     {
+        //         dismantling_string(sentence, "/", &c_file);
+        //     }
+        //     else
+        //     {
+        //         log_error("无效 非标准路径 %s", sentence);
+        //         break;
+        //     }
+        //     char *file_value = get_string(c_file.size, &c_file);
+
+        //     char buf_path[MAX_PATH];
+        //     _gitcwd(buf_path, MAX_PATH - 1);
+
+        //     char buf_local_path[MAX_PATH] = {0};
+        //     get_printf(buf_local_path, "%s\\%s\\", buf_path, file_value);
+
+        //     def_c_paths paths;
+        //     find_files(sentence, &paths, true);
+        //     for (int i = 0; i < paths.index; i++)
+        //     {
+        //         char buf_tmp[MAX_PATH];
+        //         strcpy(buf_tmp,paths.paths[i]);
+        //         remove_string_start(buf_tmp,sentence);
+        //         strcat(buf_local_path,buf_tmp);
+
+        //         if (!(copy_file(paths.paths[i],buf_local_path)))
+        //         {
+        //             log_success("将 %s 拉取到 %s 成功",paths.paths[i],buf_local_path);
+        //         }
+        //         else
+        //         {
+        //            log_error("将 %s 拉取到 %s 失败",paths.paths[i],buf_local_path);
+        //         }
+
+        //     }
+        // }
+        else if (strstr(input_buff, "git clone"))
+        {
+            simple_c_string c_string;
+            dismantling_string(input_buff, " ", &c_string);
+
+            char *sentence = get_string(2, &c_string);
+            remove_char_end(sentence, '\n');
+
+            if (!(strstr(sentence, "\\") || strstr(sentence, "/")))
+            {
+                log_error("无效 非标准路径 %s", sentence);
+            }
+            else
+            {
+                char buf_path[MAX_PATH];
+                _getcwd(buf_path, MAX_PATH - 1);
+
+                def_c_paths paths;
+                find_files(sentence, &paths, true);
+                for (int i = 0; i < paths.index; i++)
+                {
+                    char buf_tmp[MAX_PATH]={0};
+                    strcpy(buf_tmp, paths.paths[i]);
+                    remove_string_start(buf_tmp, sentence);
+                    char buf_local_path[MAX_PATH] = {0};
+                    strcpy(buf_local_path,buf_path);
+                    strcat(buf_local_path,buf_tmp);
+
+                    if (!(copy_file(paths.paths[i], buf_local_path)))
+                    {
+                        log_success("将 %s 拉取到 %s 成功", paths.paths[i], buf_local_path);
+                    }
+                    else
+                    {
+                        log_error("将 %s 拉取到 %s 失败", paths.paths[i], buf_local_path);
+                    }
+                }
+            }
+        }
         else if (strstr(input_buff, "git --help"))
         {
             log_log("git init 创建仓库");
@@ -328,14 +420,71 @@ void engine_loop()
         }
         else
         {
-            log_warning("找不到命令:%s",input_buff);
+            log_warning("找不到命令:%s", input_buff);
             log_log("获取可以通过[git --help]的方式查看命令帮助");
         }
     }
 }
 
-void main()
+void main(int argc, char *argv[])
 {
+
+    // const char *commit_type = argv[1]; //命令
+    // const char *path_exe = argv[2];    //exe路径
+    // const char *path_icon = argv[3];   //图标
+    // const char *name = argv[4];        //名字
+
+    // char buf_reg_key[MAX_PATH] = {0};    //主路径
+    // char buf_reg_subkey[MAX_PATH] = {0}; //子路径
+
+    // strcpy(buf_reg_key, REG_DIRECTORY);
+    // strcat(buf_reg_key, name);
+
+    // strcpy(buf_reg_subkey, REG_DIRECTORY);
+    // strcat(buf_reg_subkey, name);
+    // strcat(buf_reg_subkey, "\\command");
+
+    // if (strcmp(commit_type, "1") == 0) //安装
+    // {
+    //     fregister_info info;
+    //     //key
+    //     init_fregister_info(&info);
+    //     strcpy(info.filename, buf_reg_key);
+    //     info.hKey = HKEY_CLASSES_ROOT;
+    //     {
+    //         info.value[info.size_value].type = REG_SZ;
+    //         strcpy(info.value[info.size_value++].buf, name);
+    //         info.value[info.size_value].type = REG_SZ;
+    //         strcpy(info.value[info.size_value].name, "icon");
+    //         strcpy(info.value[info.size_value++].buf, path_icon);
+    //     }
+    //     if (!register_info(&info))
+    //     {
+    //         printf("\n 1 需要管理员权限 \n");
+    //         return -1;
+    //     }
+    //     //subkey
+    //     init_fregister_info(&info);
+    //     strcpy(info.filename, buf_reg_subkey);
+    //     info.hKey = HKEY_CLASSES_ROOT;
+    //     {
+    //         info.value[info.size_value].type = REG_SZ;
+    //         strcpy(info.value[info.size_value++].buf, path_exe);
+    //     }
+    //     if (!register_info(&info))
+    //     {
+    //         printf("\n 2 需要管理员权限 \n");
+    //         return -1;
+    //     }
+    // }
+    // else if (strcmp(commit_type, "2") == 0) //卸载
+    // {
+    //     if (delete_register_info(HKEY_CLASSES_ROOT, buf_reg_key))
+    //     {
+    //         delete_register_key(HKEY_CLASSES_ROOT, REG_DIRECTORY, name);
+    //     }
+    // }
+
     //初始化
     init_engine();
 
