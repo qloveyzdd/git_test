@@ -1,0 +1,2 @@
+D:\mingw64\bin\ar.exe qc libsimple_file_helper_static.a  CMakeFiles/simple_file_helper_static.dir/Private/simple_file_helper.obj
+D:\mingw64\bin\ranlib.exe libsimple_file_helper_static.a

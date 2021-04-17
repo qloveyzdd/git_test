@@ -1,0 +1,8 @@
+git init 创建仓库
+git remote add origin 添加远程仓库
+git --global user.email 添加email
+git --global user.name 添加name
+git clone 复制文件到此仓库
+ssh-keygen -t rsa -C 创建密钥(尚未完成)
+exit 退出
+退出成功！！

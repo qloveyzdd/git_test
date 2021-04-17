@@ -1,6 +1,13 @@
 #include "..\Public\simple_file_helper.h"
+#include "..\..\simple_c_array\simple_c_array.h"
 #include <stdio.h>
 #include <io.h>
+
+void init_def_c_paths(def_c_paths *str)
+{
+    str->index = 0;
+    memset(str->paths, 0, sizeof(str->paths));
+}
 
 int copy_file(const char *src, const char *dest)
 {
@@ -77,4 +84,35 @@ bool create_file(const char *filename)
         return true;
     }
     return false;
+}
+
+bool create_file_directory(const char *in_path)
+{
+    simple_c_string c_file;
+    if (strstr(in_path, "\\"))
+    {
+        dismantling_string(in_path, "\\", &c_file);
+    }
+    else if (strstr(in_path, "/"))
+    {
+        dismantling_string(in_path, "/", &c_file);
+    }
+    else
+    {
+        // log_error("无效，非标准路径，请检查%s", in_path);
+        return false;
+    }
+
+    char path[260] = {0};
+    for (int i = 0; i < c_file.size; i++)
+    {
+        char *value = get_string(i, &c_file);
+        strcat(path, value);
+        if (_access(path, 0) == -1)
+        {
+            _mkdir(path);
+        }
+    }
+
+    destroy_string(&c_file);
 }

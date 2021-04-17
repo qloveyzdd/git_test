@@ -6,11 +6,22 @@ add_subdirectory(simple_c_array)    #添加查找文件夹，这样可以去文�
 add_subdirectory(simple_c_helper_file)    #添加查找文件夹，这样可以去文件夹中查找编译
 add_subdirectory(simple_c_string_algorithm)    #添加查找文件夹，这样可以去文件夹中查找编译
 add_subdirectory(simple_c_windows)    #添加查找文件夹，这样可以去文件夹中查找编译
+# link_directories(${CMAKE_CURRENT_SOURCE_DIR}/simple_c_helper_file)
 
 add_executable(source ${source_list})   #生成目标文件
 
-target_link_libraries(source simple_c_array_lib)    #添加链接库
-target_link_libraries(source simple_file_helper_lib simple_c_string_algorithm_lib simple_c_windows_lib)    #添加链接库
+target_link_libraries(source simple_c_array_static)    #添加链接库
+
+target_link_libraries(source simple_file_helper_shared)    #添加链接库
+
+target_link_libraries(source simple_c_string_algorithm_lib)    #添加链接库
+
+target_link_libraries(source simple_c_windows_lib)    #添加链接库
+
+#如果B的头文件中包含了A的头文件(源文件间接包含)，那么这里应该用PUBLIC，依赖关系会传递下去。
+#如果B仅源文件中包含了A的头文件，那么这里应该用PRIVATE，依赖关系不会传递。
+#如果B的头文件包含A，但源文件未包含，那么这里应该用INTERFACE，依赖关系不会传递。
+#target_link_libraries(simple_file_helper_lib PRIVATE simple_c_array_lib)
 
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")

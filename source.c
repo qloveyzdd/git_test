@@ -387,6 +387,7 @@ void engine_loop()
                 _getcwd(buf_path, MAX_PATH - 1);
 
                 def_c_paths paths;
+                init_def_c_paths(&paths);
                 find_files(sentence, &paths, true);
                 for (int i = 0; i < paths.index; i++)
                 {
@@ -407,6 +408,7 @@ void engine_loop()
                     }
                 }
             }
+            destroy_string(&c_string);
         }
         else if (strstr(input_buff, "git --help"))
         {
