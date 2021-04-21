@@ -8,175 +8,10 @@
 #include "simple_c_array\simple_c_array.h"
 #include "simple_c_helper_file\simple_c_helper_file.h"
 #include "simple_c_path\simple_c_path.h"
-
-const char git_local_cofg_file[MAX_PATH] = "C:\\local_git\\"; //配置文件路径
-
-char git_path[MAX_PATH] = {0};          //git路径
-char git_log_path[MAX_PATH] = {0};      //log路径
-char git_remote_origin[MAX_PATH] = {0}; //获取远端路径
-
-char gir_local_cofg_filename[MAX_PATH] = {0}; //配置文件名称
-
-typedef enum e_error
-{
-    GIT_SUCCESS = 0,
-    GIT_LOG,
-    GIT_WARNING,
-    GIT_ERROR,
-};
-
-typedef struct fgit_user //  用户信息
-{
-    char name[MAX_PATH];
-    char password[MAX_PATH];
-    char email[MAX_PATH];
-};
-
-void log_wirte(enum e_error error, char *format, ...);
-#define log_log(...) log_wirte(GIT_LOG, __VA_ARGS__)
-#define log_success(...) log_wirte(GIT_SUCCESS, __VA_ARGS__)
-#define log_warning(...) log_wirte(GIT_WARNING, __VA_ARGS__)
-#define log_error(...) log_wirte(GIT_ERROR, __VA_ARGS__)
-
-struct fgit_user user;
-
-void get_current_time(char *buf_time, int cn_zh)
-{
-    char buf[256] = {0};
-    if (cn_zh == 1)
-    {
-        SYSTEMTIME sys;
-        GetLocalTime(&sys);
-        char p_time[5];
-        _ltoa(sys.wYear, p_time, 10);
-        strcpy(buf, p_time);
-        strcat(buf, "年");
-        _ltoa(sys.wMonth, p_time, 10);
-        strcat(buf, p_time);
-        strcat(buf, "月");
-        _ltoa(sys.wDay, p_time, 10);
-        strcat(buf, p_time);
-        strcat(buf, "日");
-        _ltoa(sys.wHour, p_time, 10);
-        strcat(buf, p_time);
-        strcat(buf, "时");
-        _ltoa(sys.wMinute, p_time, 10);
-        strcat(buf, p_time);
-        strcat(buf, "分");
-        _ltoa(sys.wSecond, p_time, 10);
-        strcat(buf, p_time);
-        strcat(buf, "秒");
-    }
-    else if (cn_zh == 0)
-    {
-        SYSTEMTIME sys;
-        GetLocalTime(&sys);
-        char p_time[5];
-        _ltoa(sys.wYear, p_time, 10);
-        strcpy(buf, p_time);
-        _ltoa(sys.wMonth, p_time, 10);
-        strcat(buf, p_time);
-        _ltoa(sys.wDay, p_time, 10);
-        strcat(buf, p_time);
-        _ltoa(sys.wHour, p_time, 10);
-        strcat(buf, p_time);
-        _ltoa(sys.wMinute, p_time, 10);
-        strcat(buf, p_time);
-        _ltoa(sys.wSecond, p_time, 10);
-        strcat(buf, p_time);
-    }
-
-    strcpy(buf_time, buf);
-}
-
-char *get_log_path()
-{
-    if (git_log_path[0] == '\0') //判读log是否存在
-    {
-        char tmp_path[256] = {0}; //临时路径存储
-        strcat(tmp_path, ".\\log\\");
-        _mkdir(tmp_path); //创建log文件夹
-
-        char buf[256] = {0};
-        get_current_time(buf, 0);
-
-        strcat(tmp_path, buf);
-        strcat(tmp_path, ".txt");
-
-        FILE *hfile = NULL;
-        if ((hfile = fopen(tmp_path, "a+")) != NULL)
-        {
-            strcpy(git_log_path, tmp_path);
-            fclose(hfile);
-        }
-        else
-        {
-            log_error("创建日志失败！！");
-        }
-    }
-    return git_log_path;
-}
-
-void log_wirte(enum e_error error, char *format, ...)
-{
-    char *p = get_log_path();
-    FILE *hfile = NULL;
-    if ((hfile = fopen(p, "a+")) != NULL)
-    {
-        char error_str[64] = {0};
-        switch (error)
-        {
-        case GIT_SUCCESS:
-            strcpy(error_str, "成功");
-            break;
-        case GIT_LOG:
-            strcpy(error_str, "LOG");
-            break;
-        case GIT_WARNING:
-            strcpy(error_str, "警告");
-            break;
-        case GIT_ERROR:
-            strcpy(error_str, "失败");
-            break;
-        }
-
-        char buf[1024] = {0};
-        va_list args;
-        va_start(args, format);
-        vsnprintf(buf, 1024 - 1, format, args);
-        strcat(buf, "\n");
-        va_end(args);
-        buf[1024 - 1] = '\0';
-
-        char tmp_time[128] = {0};
-        get_current_time(tmp_time, 1);
-
-        char text_buf[1024] = {0};
-        get_printf(text_buf, "[%s][%s]%s \r\n", error_str, tmp_time, buf);
-
-        printf(text_buf);
-        fprintf(hfile, buf);
-        fclose(hfile);
-    }
-}
-
-char *get_git_init()
-{
-    if (git_path[0] == '\0')
-    {
-        char tmp_path[256] = {0};
-        strcat(tmp_path, ".\\git\\");
-        _mkdir(tmp_path);
-        strcat(tmp_path, "git.txt");
-        FILE *hfile = NULL;
-        if ((hfile = fopen(tmp_path, "a+")) != NULL)
-        {
-            strcpy(git_path, tmp_path);
-            fclose(hfile);
-        }
-    }
-    return git_path;
-}
+#include "simple_c_file\simple_c_file.h"
+#include "main_core\Public\log.h"
+#include "main_core\Public\git.h"
+#include "main_core\Public\main_core.h"
 
 void init_engine()
 {
@@ -320,59 +155,50 @@ void engine_loop()
             //openSSL RSA
             log_error("ssh-keygen -t rsa -C 该指令尚未完成");
         }
+        else if (strstr(input_buff, "git push"))
+        {
+            if (git_remote_origin[0] == '\0')
+            {
+                log_error("远端路径未设置，请使用\"git remote add origin\"设置远端路径");
+            }
+            else
+            {
+                if (strstr(input_buff, "git push ."))
+                {
+                    char sentence[MAX_PATH] = {0};
+                    _getcwd(sentence, MAX_PATH - 1); //  获取本地路径
+
+                    char *buf_path = git_remote_origin; //  获取远端路径
+
+                    copy_files(buf_path,sentence);
+                }
+                else if (strstr(input_buff, "git push"))
+                {
+                    simple_c_string c_string;
+                    dismantling_string(input_buff, " ", &c_string);
+                    char *sentence = get_string(2, &c_string);
+                    remove_char_end(sentence, '\n');
+
+                    char buf_path[MAX_PATH] = {0};
+                    strcpy(buf_path, git_remote_origin);
+
+                    copy_files(buf_path,sentence);
+
+                    destroy_string(&c_string);
+                }
+            }
+        }
         else if (strstr(input_buff, "git clone"))
         {
             simple_c_string c_string;
             dismantling_string(input_buff, " ", &c_string);
-
             char *sentence = get_string(2, &c_string);
             remove_char_end(sentence, '\n');
 
-            if (!(strstr(sentence, "\\") || strstr(sentence, "/")))
-            {
-                log_error("无效 非标准路径 %s", sentence);
-            }
-            else
-            {
-                char buf_path[MAX_PATH];
-                _getcwd(buf_path, MAX_PATH - 1);//将当前的绝对路径放在字符串中
+            char buf_path[MAX_PATH];
+            _getcwd(buf_path, MAX_PATH - 1); //将当前的绝对路径放在字符串中
 
-                def_c_paths paths;
-                init_def_c_paths(&paths);
-                find_files(sentence, &paths, true);
-                for (int i = 0; i < paths.index; i++)
-                {
-                    char buf_tmp[MAX_PATH] = {0};
-                    strcpy(buf_tmp, paths.paths[i]);
-                    remove_string_start(buf_tmp, sentence);
-                    char buf_local_path[MAX_PATH] = {0};
-                    strcpy(buf_local_path, buf_path);
-                    strcat(buf_local_path, buf_tmp);
-
-                    {
-                        char buf_local_path_tmp[MAX_PATH] = {0};
-                        strcpy(buf_local_path_tmp, buf_local_path);
-                        get_path_directory_inline(buf_local_path_tmp);
-                        
-
-                        if (create_file_directory(buf_local_path_tmp)==false)
-                        {
-                            log_error("当前路径下内容无法拷贝：%s",buf_local_path_tmp);
-                            break;
-                        }
-                        
-                    }
-
-                    if (!(copy_file(paths.paths[i], buf_local_path)))
-                    {
-                        log_success("将 %s 拉取到 %s 成功", paths.paths[i], buf_local_path);
-                    }
-                    else
-                    {
-                        log_error("将 %s 拉取到 %s 失败", paths.paths[i], buf_local_path);
-                    }
-                }
-            }
+            copy_files(buf_path,sentence);
             destroy_string(&c_string);
         }
         else if (strstr(input_buff, "git --help"))

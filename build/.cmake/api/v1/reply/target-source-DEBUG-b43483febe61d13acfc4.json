@@ -28,12 +28,6 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 11,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
 				"line" : 13,
 				"parent" : 0
 			},
@@ -52,13 +46,31 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 19,
+				"line" : 18,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
 				"line" : 21,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 16,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 19,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 20,
 				"parent" : 0
 			}
 		]
@@ -86,20 +98,28 @@
 			"id" : "simple_c_array::@13c963669075b918a0e6"
 		},
 		{
-			"backtrace" : 3,
-			"id" : "simple_file_helper::@439b6b2e70f808ec3390"
+			"backtrace" : 6,
+			"id" : "simple_c_helper_file::@439b6b2e70f808ec3390"
 		},
 		{
 			"backtrace" : 4,
-			"id" : "simple_c_string_algorithm::@8c3c14151cc95512536a"
-		},
-		{
-			"backtrace" : 5,
 			"id" : "simple_c_windows::@d689f78a1b7711e6fba7"
 		},
 		{
-			"backtrace" : 6,
-			"id" : "simple_path_file::@a85f4144b8de1844dd6a"
+			"backtrace" : 3,
+			"id" : "simple_c_string_algorithm::@8c3c14151cc95512536a"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "simple_c_path::@a85f4144b8de1844dd6a"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "simple_c_file::@518ec24a656770f27e79"
+		},
+		{
+			"backtrace" : 8,
+			"id" : "main_core::@adf1a919b4167fae519c"
 		}
 	],
 	"id" : "source::@6890427a1f51a3e7e1df",
@@ -122,22 +142,32 @@
 			},
 			{
 				"backtrace" : 3,
-				"fragment" : "lib\\libsimple_file_helper.dll.a",
-				"role" : "libraries"
-			},
-			{
-				"backtrace" : 4,
 				"fragment" : "simple_c_string_algorithm\\libsimple_c_string_algorithm.a",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 5,
+				"backtrace" : 4,
 				"fragment" : "simple_c_windows\\libsimple_c_windows.a",
 				"role" : "libraries"
 			},
 			{
+				"backtrace" : 5,
+				"fragment" : "lib\\libsimple_c_file.dll.a",
+				"role" : "libraries"
+			},
+			{
 				"backtrace" : 6,
-				"fragment" : "lib\\libsimple_path_file.dll.a",
+				"fragment" : "lib\\libsimple_c_helper_file.dll.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 7,
+				"fragment" : "lib\\libsimple_c_path.dll.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "lib\\libmain_core.dll.a",
 				"role" : "libraries"
 			},
 			{

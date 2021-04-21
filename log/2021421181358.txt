@@ -1,0 +1,2 @@
+远端路径未设置，请使用"git remote add origin"设置远端路径
+退出成功！！

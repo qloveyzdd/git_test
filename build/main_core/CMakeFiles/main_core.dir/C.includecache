@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/git_test/main_core/Private/git.c
+../Public/git.h
+D:/git_test/main_core/Public/git.h
+stdio.h
+-
+direct.h
+-
+
+D:/git_test/main_core/Public/git.h
+windows.h
+-
+

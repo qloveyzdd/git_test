@@ -1,7 +1,7 @@
 #include "..\Public\simple_file_helper.h"
 #include "..\..\simple_c_array\simple_c_array.h"
 #include <stdio.h>
-#include<direct.h>
+#include <direct.h>
 #include <io.h>
 
 void init_def_c_paths(def_c_paths *str)
@@ -120,3 +120,4 @@ bool create_file_directory(const char *in_path)
     destroy_string(&c_file);
     return _access(path, 0) == 0;
 }
+

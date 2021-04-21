@@ -199,17 +199,17 @@ simple_c_array/fast:
 .PHONY : simple_c_array/fast
 
 #=============================================================================
-# Target rules for targets named simple_file_helper
+# Target rules for targets named simple_c_helper_file
 
 # Build rule for target.
-simple_file_helper: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 simple_file_helper
-.PHONY : simple_file_helper
+simple_c_helper_file: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_helper_file
+.PHONY : simple_c_helper_file
 
 # fast build rule for target.
-simple_file_helper/fast:
-	$(MAKE) -f simple_c_helper_file\CMakeFiles\simple_file_helper.dir\build.make simple_c_helper_file/CMakeFiles/simple_file_helper.dir/build
-.PHONY : simple_file_helper/fast
+simple_c_helper_file/fast:
+	$(MAKE) -f simple_c_helper_file\CMakeFiles\simple_c_helper_file.dir\build.make simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/build
+.PHONY : simple_c_helper_file/fast
 
 #=============================================================================
 # Target rules for targets named simple_c_string_algorithm
@@ -238,17 +238,43 @@ simple_c_windows/fast:
 .PHONY : simple_c_windows/fast
 
 #=============================================================================
-# Target rules for targets named simple_path_file
+# Target rules for targets named simple_c_path
 
 # Build rule for target.
-simple_path_file: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 simple_path_file
-.PHONY : simple_path_file
+simple_c_path: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_path
+.PHONY : simple_c_path
 
 # fast build rule for target.
-simple_path_file/fast:
-	$(MAKE) -f simple_c_path\CMakeFiles\simple_path_file.dir\build.make simple_c_path/CMakeFiles/simple_path_file.dir/build
-.PHONY : simple_path_file/fast
+simple_c_path/fast:
+	$(MAKE) -f simple_c_path\CMakeFiles\simple_c_path.dir\build.make simple_c_path/CMakeFiles/simple_c_path.dir/build
+.PHONY : simple_c_path/fast
+
+#=============================================================================
+# Target rules for targets named main_core
+
+# Build rule for target.
+main_core: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 main_core
+.PHONY : main_core
+
+# fast build rule for target.
+main_core/fast:
+	$(MAKE) -f main_core\CMakeFiles\main_core.dir\build.make main_core/CMakeFiles/main_core.dir/build
+.PHONY : main_core/fast
+
+#=============================================================================
+# Target rules for targets named simple_c_file
+
+# Build rule for target.
+simple_c_file: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_file
+.PHONY : simple_c_file
+
+# fast build rule for target.
+simple_c_file/fast:
+	$(MAKE) -f simple_c_file\CMakeFiles\simple_c_file.dir\build.make simple_c_file/CMakeFiles/simple_c_file.dir/build
+.PHONY : simple_c_file/fast
 
 # target to build an object file
 source.obj:
@@ -277,11 +303,13 @@ help:
 	@echo ... install/strip
 	@echo ... list_install_components
 	@echo ... rebuild_cache
+	@echo ... main_core
 	@echo ... simple_c_array
+	@echo ... simple_c_file
+	@echo ... simple_c_helper_file
+	@echo ... simple_c_path
 	@echo ... simple_c_string_algorithm
 	@echo ... simple_c_windows
-	@echo ... simple_file_helper
-	@echo ... simple_path_file
 	@echo ... source
 	@echo ... source.obj
 	@echo ... source.i

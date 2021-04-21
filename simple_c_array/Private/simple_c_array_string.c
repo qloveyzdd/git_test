@@ -1,5 +1,5 @@
 #include "../Public/simple_c_array_string.h"
-
+#include <string.h>
 
 void init_string(simple_c_string *array_c)
 {
@@ -20,7 +20,7 @@ void add_string(const char *in_data, simple_c_string *array_c)
     assert(array_c);
     int index = array_c->size;
     array_c->size++;
-    array_c->data = realloc(array_c->data, array_c->size * sizeof(str_node));
+    array_c->data = (str_node*)realloc(array_c->data, array_c->size * sizeof(str_node));
     strcpy(array_c->data[index].data, in_data);
 }
 
@@ -41,7 +41,7 @@ char *get_string(int in_index, simple_c_string *array_c)
 void dismantling_string(const char *in_data, const char *str_sub, simple_c_string *array_c)
 {
     char buf[260] = {0};
-    strcpy(buf,in_data);
+    strcpy(buf, in_data);
     init_string(array_c);
     char *p = strtok(buf, str_sub);
     while (p != NULL)
@@ -50,4 +50,3 @@ void dismantling_string(const char *in_data, const char *str_sub, simple_c_strin
         p = strtok(NULL, str_sub);
     }
 }
-

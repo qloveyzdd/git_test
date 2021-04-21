@@ -811,7 +811,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "6"
+			"value" : "8"
 		},
 		{
 			"name" : "CMAKE_OBJCOPY",
@@ -1316,6 +1316,54 @@
 			],
 			"type" : "PATH",
 			"value" : ""
+		},
+		{
+			"name" : "main_core_LIB_DEPENDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Dependencies for the target"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "general;simple_c_string_algorithm;"
+		},
+		{
+			"name" : "simple_c_file_LIB_DEPENDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Dependencies for the target"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "general;simple_c_string_algorithm;general;simple_c_helper_file;general;simple_c_path;general;main_core;"
+		},
+		{
+			"name" : "simple_c_helper_file_LIB_DEPENDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Dependencies for the target"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "general;simple_c_array;"
+		},
+		{
+			"name" : "simple_c_path_LIB_DEPENDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Dependencies for the target"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "general;simple_c_array;general;simple_c_string_algorithm;"
 		},
 		{
 			"name" : "simple_file_helper_LIB_DEPENDS",

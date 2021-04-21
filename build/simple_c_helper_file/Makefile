@@ -72,6 +72,17 @@ CMAKE_BINARY_DIR = D:\git_test\build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -106,17 +117,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -173,33 +173,33 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-simple_c_helper_file/CMakeFiles/simple_file_helper.dir/rule:
-	cd /d D:\git_test\build && $(MAKE) -f CMakeFiles\Makefile2 simple_c_helper_file/CMakeFiles/simple_file_helper.dir/rule
-.PHONY : simple_c_helper_file/CMakeFiles/simple_file_helper.dir/rule
+simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/rule:
+	cd /d D:\git_test\build && $(MAKE) -f CMakeFiles\Makefile2 simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/rule
+.PHONY : simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/rule
 
 # Convenience name for target.
-simple_file_helper: simple_c_helper_file/CMakeFiles/simple_file_helper.dir/rule
+simple_c_helper_file: simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/rule
 
-.PHONY : simple_file_helper
+.PHONY : simple_c_helper_file
 
 # fast build rule for target.
-simple_file_helper/fast:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_helper_file\CMakeFiles\simple_file_helper.dir\build.make simple_c_helper_file/CMakeFiles/simple_file_helper.dir/build
-.PHONY : simple_file_helper/fast
+simple_c_helper_file/fast:
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_helper_file\CMakeFiles\simple_c_helper_file.dir\build.make simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/build
+.PHONY : simple_c_helper_file/fast
 
 # target to build an object file
 Private/simple_file_helper.obj:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_helper_file\CMakeFiles\simple_file_helper.dir\build.make simple_c_helper_file/CMakeFiles/simple_file_helper.dir/Private/simple_file_helper.obj
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_helper_file\CMakeFiles\simple_c_helper_file.dir\build.make simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/Private/simple_file_helper.obj
 .PHONY : Private/simple_file_helper.obj
 
 # target to preprocess a source file
 Private/simple_file_helper.i:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_helper_file\CMakeFiles\simple_file_helper.dir\build.make simple_c_helper_file/CMakeFiles/simple_file_helper.dir/Private/simple_file_helper.i
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_helper_file\CMakeFiles\simple_c_helper_file.dir\build.make simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/Private/simple_file_helper.i
 .PHONY : Private/simple_file_helper.i
 
 # target to generate assembly for a file
 Private/simple_file_helper.s:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_helper_file\CMakeFiles\simple_file_helper.dir\build.make simple_c_helper_file/CMakeFiles/simple_file_helper.dir/Private/simple_file_helper.s
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_helper_file\CMakeFiles\simple_c_helper_file.dir\build.make simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/Private/simple_file_helper.s
 .PHONY : Private/simple_file_helper.s
 
 # Help Target
@@ -214,7 +214,7 @@ help:
 	@echo ... install/strip
 	@echo ... list_install_components
 	@echo ... rebuild_cache
-	@echo ... simple_file_helper
+	@echo ... simple_c_helper_file
 	@echo ... Private/simple_file_helper.obj
 	@echo ... Private/simple_file_helper.i
 	@echo ... Private/simple_file_helper.s

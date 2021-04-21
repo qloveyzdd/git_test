@@ -35,7 +35,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.17.0-rc3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.17.0-rc3/CMakeRCCompiler.cmake"
   "CMakeFiles/3.17.0-rc3/CMakeSystem.cmake"
+  "../main_core/CMakeLists.txt"
   "../simple_c_array/CMakeLists.txt"
+  "../simple_c_file/CMakeLists.txt"
   "../simple_c_helper_file/CMakeLists.txt"
   "../simple_c_path/CMakeLists.txt"
   "../simple_c_string_algorithm/CMakeLists.txt"
@@ -56,14 +58,18 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "simple_c_string_algorithm/CMakeFiles/CMakeDirectoryInformation.cmake"
   "simple_c_windows/CMakeFiles/CMakeDirectoryInformation.cmake"
   "simple_c_path/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "main_core/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "simple_c_file/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/source.dir/DependInfo.cmake"
   "simple_c_array/CMakeFiles/simple_c_array.dir/DependInfo.cmake"
-  "simple_c_helper_file/CMakeFiles/simple_file_helper.dir/DependInfo.cmake"
+  "simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/DependInfo.cmake"
   "simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/DependInfo.cmake"
   "simple_c_windows/CMakeFiles/simple_c_windows.dir/DependInfo.cmake"
-  "simple_c_path/CMakeFiles/simple_path_file.dir/DependInfo.cmake"
+  "simple_c_path/CMakeFiles/simple_c_path.dir/DependInfo.cmake"
+  "main_core/CMakeFiles/main_core.dir/DependInfo.cmake"
+  "simple_c_file/CMakeFiles/simple_c_file.dir/DependInfo.cmake"
   )

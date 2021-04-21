@@ -75,6 +75,8 @@ all: simple_c_helper_file/all
 all: simple_c_string_algorithm/all
 all: simple_c_windows/all
 all: simple_c_path/all
+all: main_core/all
+all: simple_c_file/all
 
 .PHONY : all
 
@@ -84,6 +86,8 @@ preinstall: simple_c_helper_file/preinstall
 preinstall: simple_c_string_algorithm/preinstall
 preinstall: simple_c_windows/preinstall
 preinstall: simple_c_path/preinstall
+preinstall: main_core/preinstall
+preinstall: simple_c_file/preinstall
 
 .PHONY : preinstall
 
@@ -94,8 +98,28 @@ clean: simple_c_helper_file/clean
 clean: simple_c_string_algorithm/clean
 clean: simple_c_windows/clean
 clean: simple_c_path/clean
+clean: main_core/clean
+clean: simple_c_file/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory main_core
+
+# Recursive "all" directory target.
+main_core/all: main_core/CMakeFiles/main_core.dir/all
+
+.PHONY : main_core/all
+
+# Recursive "preinstall" directory target.
+main_core/preinstall:
+
+.PHONY : main_core/preinstall
+
+# Recursive "clean" directory target.
+main_core/clean: main_core/CMakeFiles/main_core.dir/clean
+
+.PHONY : main_core/clean
 
 #=============================================================================
 # Directory level rules for directory simple_c_array
@@ -116,10 +140,28 @@ simple_c_array/clean: simple_c_array/CMakeFiles/simple_c_array.dir/clean
 .PHONY : simple_c_array/clean
 
 #=============================================================================
+# Directory level rules for directory simple_c_file
+
+# Recursive "all" directory target.
+simple_c_file/all: simple_c_file/CMakeFiles/simple_c_file.dir/all
+
+.PHONY : simple_c_file/all
+
+# Recursive "preinstall" directory target.
+simple_c_file/preinstall:
+
+.PHONY : simple_c_file/preinstall
+
+# Recursive "clean" directory target.
+simple_c_file/clean: simple_c_file/CMakeFiles/simple_c_file.dir/clean
+
+.PHONY : simple_c_file/clean
+
+#=============================================================================
 # Directory level rules for directory simple_c_helper_file
 
 # Recursive "all" directory target.
-simple_c_helper_file/all: simple_c_helper_file/CMakeFiles/simple_file_helper.dir/all
+simple_c_helper_file/all: simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/all
 
 .PHONY : simple_c_helper_file/all
 
@@ -129,7 +171,7 @@ simple_c_helper_file/preinstall:
 .PHONY : simple_c_helper_file/preinstall
 
 # Recursive "clean" directory target.
-simple_c_helper_file/clean: simple_c_helper_file/CMakeFiles/simple_file_helper.dir/clean
+simple_c_helper_file/clean: simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/clean
 
 .PHONY : simple_c_helper_file/clean
 
@@ -137,7 +179,7 @@ simple_c_helper_file/clean: simple_c_helper_file/CMakeFiles/simple_file_helper.d
 # Directory level rules for directory simple_c_path
 
 # Recursive "all" directory target.
-simple_c_path/all: simple_c_path/CMakeFiles/simple_path_file.dir/all
+simple_c_path/all: simple_c_path/CMakeFiles/simple_c_path.dir/all
 
 .PHONY : simple_c_path/all
 
@@ -147,7 +189,7 @@ simple_c_path/preinstall:
 .PHONY : simple_c_path/preinstall
 
 # Recursive "clean" directory target.
-simple_c_path/clean: simple_c_path/CMakeFiles/simple_path_file.dir/clean
+simple_c_path/clean: simple_c_path/CMakeFiles/simple_c_path.dir/clean
 
 .PHONY : simple_c_path/clean
 
@@ -192,18 +234,20 @@ simple_c_windows/clean: simple_c_windows/CMakeFiles/simple_c_windows.dir/clean
 
 # All Build rule for target.
 CMakeFiles/source.dir/all: simple_c_array/CMakeFiles/simple_c_array.dir/all
-CMakeFiles/source.dir/all: simple_c_helper_file/CMakeFiles/simple_file_helper.dir/all
-CMakeFiles/source.dir/all: simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/all
+CMakeFiles/source.dir/all: simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/all
 CMakeFiles/source.dir/all: simple_c_windows/CMakeFiles/simple_c_windows.dir/all
-CMakeFiles/source.dir/all: simple_c_path/CMakeFiles/simple_path_file.dir/all
+CMakeFiles/source.dir/all: simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/all
+CMakeFiles/source.dir/all: simple_c_path/CMakeFiles/simple_c_path.dir/all
+CMakeFiles/source.dir/all: simple_c_file/CMakeFiles/simple_c_file.dir/all
+CMakeFiles/source.dir/all: main_core/CMakeFiles/main_core.dir/all
 	$(MAKE) -f CMakeFiles\source.dir\build.make CMakeFiles/source.dir/depend
 	$(MAKE) -f CMakeFiles\source.dir\build.make CMakeFiles/source.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=11,12 "Built target source"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=17,18 "Built target source"
 .PHONY : CMakeFiles/source.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/source.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\git_test\build\CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\git_test\build\CMakeFiles 18
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/source.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\git_test\build\CMakeFiles 0
 .PHONY : CMakeFiles/source.dir/rule
@@ -225,7 +269,7 @@ CMakeFiles/source.dir/clean:
 simple_c_array/CMakeFiles/simple_c_array.dir/all:
 	$(MAKE) -f simple_c_array\CMakeFiles\simple_c_array.dir\build.make simple_c_array/CMakeFiles/simple_c_array.dir/depend
 	$(MAKE) -f simple_c_array\CMakeFiles\simple_c_array.dir\build.make simple_c_array/CMakeFiles/simple_c_array.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=1,2 "Built target simple_c_array"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=5,6 "Built target simple_c_array"
 .PHONY : simple_c_array/CMakeFiles/simple_c_array.dir/all
 
 # Build rule for subdir invocation for target.
@@ -246,31 +290,31 @@ simple_c_array/CMakeFiles/simple_c_array.dir/clean:
 .PHONY : simple_c_array/CMakeFiles/simple_c_array.dir/clean
 
 #=============================================================================
-# Target rules for target simple_c_helper_file/CMakeFiles/simple_file_helper.dir
+# Target rules for target simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir
 
 # All Build rule for target.
-simple_c_helper_file/CMakeFiles/simple_file_helper.dir/all: simple_c_array/CMakeFiles/simple_c_array.dir/all
-	$(MAKE) -f simple_c_helper_file\CMakeFiles\simple_file_helper.dir\build.make simple_c_helper_file/CMakeFiles/simple_file_helper.dir/depend
-	$(MAKE) -f simple_c_helper_file\CMakeFiles\simple_file_helper.dir\build.make simple_c_helper_file/CMakeFiles/simple_file_helper.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=7,8 "Built target simple_file_helper"
-.PHONY : simple_c_helper_file/CMakeFiles/simple_file_helper.dir/all
+simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/all: simple_c_array/CMakeFiles/simple_c_array.dir/all
+	$(MAKE) -f simple_c_helper_file\CMakeFiles\simple_c_helper_file.dir\build.make simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/depend
+	$(MAKE) -f simple_c_helper_file\CMakeFiles\simple_c_helper_file.dir\build.make simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=9,10 "Built target simple_c_helper_file"
+.PHONY : simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/all
 
 # Build rule for subdir invocation for target.
-simple_c_helper_file/CMakeFiles/simple_file_helper.dir/rule: cmake_check_build_system
+simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\git_test\build\CMakeFiles 4
-	$(MAKE) -f CMakeFiles\Makefile2 simple_c_helper_file/CMakeFiles/simple_file_helper.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\git_test\build\CMakeFiles 0
-.PHONY : simple_c_helper_file/CMakeFiles/simple_file_helper.dir/rule
+.PHONY : simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/rule
 
 # Convenience name for target.
-simple_file_helper: simple_c_helper_file/CMakeFiles/simple_file_helper.dir/rule
+simple_c_helper_file: simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/rule
 
-.PHONY : simple_file_helper
+.PHONY : simple_c_helper_file
 
 # clean rule for target.
-simple_c_helper_file/CMakeFiles/simple_file_helper.dir/clean:
-	$(MAKE) -f simple_c_helper_file\CMakeFiles\simple_file_helper.dir\build.make simple_c_helper_file/CMakeFiles/simple_file_helper.dir/clean
-.PHONY : simple_c_helper_file/CMakeFiles/simple_file_helper.dir/clean
+simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/clean:
+	$(MAKE) -f simple_c_helper_file\CMakeFiles\simple_c_helper_file.dir\build.make simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/clean
+.PHONY : simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/clean
 
 #=============================================================================
 # Target rules for target simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir
@@ -279,7 +323,7 @@ simple_c_helper_file/CMakeFiles/simple_file_helper.dir/clean:
 simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/all:
 	$(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/depend
 	$(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=3,4 "Built target simple_c_string_algorithm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=13,14 "Built target simple_c_string_algorithm"
 .PHONY : simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/all
 
 # Build rule for subdir invocation for target.
@@ -306,7 +350,7 @@ simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/clean:
 simple_c_windows/CMakeFiles/simple_c_windows.dir/all:
 	$(MAKE) -f simple_c_windows\CMakeFiles\simple_c_windows.dir\build.make simple_c_windows/CMakeFiles/simple_c_windows.dir/depend
 	$(MAKE) -f simple_c_windows\CMakeFiles\simple_c_windows.dir\build.make simple_c_windows/CMakeFiles/simple_c_windows.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=5,6 "Built target simple_c_windows"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=15,16 "Built target simple_c_windows"
 .PHONY : simple_c_windows/CMakeFiles/simple_c_windows.dir/all
 
 # Build rule for subdir invocation for target.
@@ -327,32 +371,89 @@ simple_c_windows/CMakeFiles/simple_c_windows.dir/clean:
 .PHONY : simple_c_windows/CMakeFiles/simple_c_windows.dir/clean
 
 #=============================================================================
-# Target rules for target simple_c_path/CMakeFiles/simple_path_file.dir
+# Target rules for target simple_c_path/CMakeFiles/simple_c_path.dir
 
 # All Build rule for target.
-simple_c_path/CMakeFiles/simple_path_file.dir/all: simple_c_array/CMakeFiles/simple_c_array.dir/all
-simple_c_path/CMakeFiles/simple_path_file.dir/all: simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/all
-	$(MAKE) -f simple_c_path\CMakeFiles\simple_path_file.dir\build.make simple_c_path/CMakeFiles/simple_path_file.dir/depend
-	$(MAKE) -f simple_c_path\CMakeFiles\simple_path_file.dir\build.make simple_c_path/CMakeFiles/simple_path_file.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=9,10 "Built target simple_path_file"
-.PHONY : simple_c_path/CMakeFiles/simple_path_file.dir/all
+simple_c_path/CMakeFiles/simple_c_path.dir/all: simple_c_array/CMakeFiles/simple_c_array.dir/all
+simple_c_path/CMakeFiles/simple_c_path.dir/all: simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/all
+	$(MAKE) -f simple_c_path\CMakeFiles\simple_c_path.dir\build.make simple_c_path/CMakeFiles/simple_c_path.dir/depend
+	$(MAKE) -f simple_c_path\CMakeFiles\simple_c_path.dir\build.make simple_c_path/CMakeFiles/simple_c_path.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=11,12 "Built target simple_c_path"
+.PHONY : simple_c_path/CMakeFiles/simple_c_path.dir/all
 
 # Build rule for subdir invocation for target.
-simple_c_path/CMakeFiles/simple_path_file.dir/rule: cmake_check_build_system
+simple_c_path/CMakeFiles/simple_c_path.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\git_test\build\CMakeFiles 6
-	$(MAKE) -f CMakeFiles\Makefile2 simple_c_path/CMakeFiles/simple_path_file.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_path/CMakeFiles/simple_c_path.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\git_test\build\CMakeFiles 0
-.PHONY : simple_c_path/CMakeFiles/simple_path_file.dir/rule
+.PHONY : simple_c_path/CMakeFiles/simple_c_path.dir/rule
 
 # Convenience name for target.
-simple_path_file: simple_c_path/CMakeFiles/simple_path_file.dir/rule
+simple_c_path: simple_c_path/CMakeFiles/simple_c_path.dir/rule
 
-.PHONY : simple_path_file
+.PHONY : simple_c_path
 
 # clean rule for target.
-simple_c_path/CMakeFiles/simple_path_file.dir/clean:
-	$(MAKE) -f simple_c_path\CMakeFiles\simple_path_file.dir\build.make simple_c_path/CMakeFiles/simple_path_file.dir/clean
-.PHONY : simple_c_path/CMakeFiles/simple_path_file.dir/clean
+simple_c_path/CMakeFiles/simple_c_path.dir/clean:
+	$(MAKE) -f simple_c_path\CMakeFiles\simple_c_path.dir\build.make simple_c_path/CMakeFiles/simple_c_path.dir/clean
+.PHONY : simple_c_path/CMakeFiles/simple_c_path.dir/clean
+
+#=============================================================================
+# Target rules for target main_core/CMakeFiles/main_core.dir
+
+# All Build rule for target.
+main_core/CMakeFiles/main_core.dir/all: simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/all
+	$(MAKE) -f main_core\CMakeFiles\main_core.dir\build.make main_core/CMakeFiles/main_core.dir/depend
+	$(MAKE) -f main_core\CMakeFiles\main_core.dir\build.make main_core/CMakeFiles/main_core.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=1,2,3,4 "Built target main_core"
+.PHONY : main_core/CMakeFiles/main_core.dir/all
+
+# Build rule for subdir invocation for target.
+main_core/CMakeFiles/main_core.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\git_test\build\CMakeFiles 6
+	$(MAKE) -f CMakeFiles\Makefile2 main_core/CMakeFiles/main_core.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\git_test\build\CMakeFiles 0
+.PHONY : main_core/CMakeFiles/main_core.dir/rule
+
+# Convenience name for target.
+main_core: main_core/CMakeFiles/main_core.dir/rule
+
+.PHONY : main_core
+
+# clean rule for target.
+main_core/CMakeFiles/main_core.dir/clean:
+	$(MAKE) -f main_core\CMakeFiles\main_core.dir\build.make main_core/CMakeFiles/main_core.dir/clean
+.PHONY : main_core/CMakeFiles/main_core.dir/clean
+
+#=============================================================================
+# Target rules for target simple_c_file/CMakeFiles/simple_c_file.dir
+
+# All Build rule for target.
+simple_c_file/CMakeFiles/simple_c_file.dir/all: simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/all
+simple_c_file/CMakeFiles/simple_c_file.dir/all: simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/all
+simple_c_file/CMakeFiles/simple_c_file.dir/all: simple_c_path/CMakeFiles/simple_c_path.dir/all
+simple_c_file/CMakeFiles/simple_c_file.dir/all: main_core/CMakeFiles/main_core.dir/all
+	$(MAKE) -f simple_c_file\CMakeFiles\simple_c_file.dir\build.make simple_c_file/CMakeFiles/simple_c_file.dir/depend
+	$(MAKE) -f simple_c_file\CMakeFiles\simple_c_file.dir\build.make simple_c_file/CMakeFiles/simple_c_file.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\git_test\build\CMakeFiles --progress-num=7,8 "Built target simple_c_file"
+.PHONY : simple_c_file/CMakeFiles/simple_c_file.dir/all
+
+# Build rule for subdir invocation for target.
+simple_c_file/CMakeFiles/simple_c_file.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\git_test\build\CMakeFiles 14
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_file/CMakeFiles/simple_c_file.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\git_test\build\CMakeFiles 0
+.PHONY : simple_c_file/CMakeFiles/simple_c_file.dir/rule
+
+# Convenience name for target.
+simple_c_file: simple_c_file/CMakeFiles/simple_c_file.dir/rule
+
+.PHONY : simple_c_file
+
+# clean rule for target.
+simple_c_file/CMakeFiles/simple_c_file.dir/clean:
+	$(MAKE) -f simple_c_file\CMakeFiles\simple_c_file.dir\build.make simple_c_file/CMakeFiles/simple_c_file.dir/clean
+.PHONY : simple_c_file/CMakeFiles/simple_c_file.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
