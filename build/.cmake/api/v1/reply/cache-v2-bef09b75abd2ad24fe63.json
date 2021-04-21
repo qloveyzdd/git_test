@@ -1327,7 +1327,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "general;simple_c_string_algorithm;"
+			"value" : "general;simple_c_string_algorithm;general;simple_c_guid;"
 		},
 		{
 			"name" : "simple_c_file_LIB_DEPENDS",

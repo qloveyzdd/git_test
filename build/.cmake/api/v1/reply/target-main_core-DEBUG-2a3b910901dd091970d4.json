@@ -34,13 +34,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 7,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 14,
+				"line" : 16,
 				"parent" : 0
 			},
 			{
@@ -59,9 +59,21 @@
 				"parent" : 0
 			},
 			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 5,
+				"parent" : 0
+			},
+			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 10,
+				"line" : 11,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 12,
 				"parent" : 0
 			}
 		]
@@ -93,8 +105,12 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 6,
+			"backtrace" : 7,
 			"id" : "simple_c_string_algorithm::@8c3c14151cc95512536a"
+		},
+		{
+			"backtrace" : 8,
+			"id" : "simple_c_guid::@72971323faae9d58fd9b"
 		}
 	],
 	"id" : "main_core::@adf1a919b4167fae519c",
@@ -139,7 +155,17 @@
 			},
 			{
 				"backtrace" : 6,
+				"fragment" : "-LD:\\git_test\\main_core\\..\\simple_c_guid",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 7,
 				"fragment" : "..\\simple_c_string_algorithm\\libsimple_c_string_algorithm.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "..\\lib\\libsimple_c_guid.dll.a",
 				"role" : "libraries"
 			},
 			{

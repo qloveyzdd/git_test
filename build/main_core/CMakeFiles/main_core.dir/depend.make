@@ -11,4 +11,6 @@ main_core/CMakeFiles/main_core.dir/Private/log.obj: ../simple_c_string_algorithm
 
 main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../main_core/Private/main_core.c
 main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../main_core/Public/main_core.h
+main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../simple_c_guid/Public/simple_guid.h
+main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../simple_c_guid/simple_c_guid.h
 

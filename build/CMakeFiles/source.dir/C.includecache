@@ -19,6 +19,8 @@ stdbool.h
 D:/git_test/main_core/Public/main_core.h
 windows.h
 D:/git_test/main_core/Public/windows.h
+../../simple_c_guid/simple_c_guid.h
+D:/git_test/simple_c_guid/simple_c_guid.h
 
 D:/git_test/simple_c_array/Public/Core/simple_array_c_macro.h
 assert.h
@@ -35,6 +37,8 @@ Public/simple_c_array_string.h
 D:/git_test/simple_c_array/Public/simple_c_array_string.h
 
 D:/git_test/simple_c_file/Public/simple_file.h
+stdbool.h
+-
 
 D:/git_test/simple_c_file/simple_c_file.h
 Public/simple_file.h

@@ -1,3 +1,3 @@
 #pragma once
-
-void copy_files(const char *src, const char *dest);//多文件拷贝
+#include <stdbool.h>
+void copy_files(const char *src, const char *dest,bool record);//多文件拷贝

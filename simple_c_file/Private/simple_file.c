@@ -3,11 +3,12 @@
 #include "..\..\simple_c_string_algorithm\simple_c_string_algorithm.h"
 #include "..\..\simple_c_path\simple_c_path.h"
 #include "..\..\main_core\Public\log.h"
+#include "..\..\main_core\Public\main_core.h"
 #include <string.h>
 #include <stdio.h>
 #define MAX_PATH 260
 
-void copy_files(const char *src, const char *dest)
+void copy_files(const char *src, const char *dest, bool record)
 {
     if (!((strstr(src, "\\") || strstr(src, "/")) && (strstr(dest, "\\") || strstr(dest, "/"))))
     {
@@ -18,6 +19,12 @@ void copy_files(const char *src, const char *dest)
         def_c_paths paths;
         init_def_c_paths(&paths);
         find_files(dest, &paths, true);
+
+        if (record == true)
+        {
+            init_git_path_2ds(&git_path_2ds);
+        }
+
         for (int i = 0; i < paths.index; i++)
         {
             char buf_tmp[MAX_PATH] = {0};
@@ -37,6 +44,13 @@ void copy_files(const char *src, const char *dest)
                     log_error("当前路径下内容无法拷贝：%s", buf_local_path_tmp);
                     break;
                 }
+            }
+
+            if (record == true)
+            {
+                strcpy(git_path_2ds.paths->path_src, paths.paths[i]);
+                strcpy(git_path_2ds.paths->path_dis, buf_local_path);
+                git_path_2ds.size = i + 1;
             }
 
             if (!(copy_file(paths.paths[i], buf_local_path)))

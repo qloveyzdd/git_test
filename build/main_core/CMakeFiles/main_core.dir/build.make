@@ -126,6 +126,7 @@ lib/libmain_core.dll: main_core/CMakeFiles/main_core.dir/Private/log.obj
 lib/libmain_core.dll: main_core/CMakeFiles/main_core.dir/Private/main_core.obj
 lib/libmain_core.dll: main_core/CMakeFiles/main_core.dir/build.make
 lib/libmain_core.dll: simple_c_string_algorithm/libsimple_c_string_algorithm.a
+lib/libmain_core.dll: lib/libsimple_c_guid.dll.a
 lib/libmain_core.dll: main_core/CMakeFiles/main_core.dir/linklibs.rsp
 lib/libmain_core.dll: main_core/CMakeFiles/main_core.dir/objects1.rsp
 lib/libmain_core.dll: main_core/CMakeFiles/main_core.dir/link.txt

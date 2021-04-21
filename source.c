@@ -164,16 +164,16 @@ void engine_loop()
             }
             else
             {
-                if (strstr(input_buff, "git push ."))
+                if (strstr(input_buff, "git add ."))
                 {
                     char sentence[MAX_PATH] = {0};
                     _getcwd(sentence, MAX_PATH - 1); //  获取本地路径
 
                     char *buf_path = git_remote_origin; //  获取远端路径
 
-                    copy_files(buf_path, sentence);
+                    copy_files(buf_path, sentence, true);
                 }
-                else if (strstr(input_buff, "git push"))
+                else if (strstr(input_buff, "git add"))
                 {
                     simple_c_string c_string;
                     dismantling_string(input_buff, " ", &c_string);
@@ -183,7 +183,7 @@ void engine_loop()
                     char buf_path[MAX_PATH] = {0};
                     strcpy(buf_path, git_remote_origin);
 
-                    copy_files(buf_path, sentence);
+                    copy_files(buf_path, sentence, true);
 
                     destroy_string(&c_string);
                 }
@@ -199,7 +199,23 @@ void engine_loop()
             char buf_path[MAX_PATH];
             _getcwd(buf_path, MAX_PATH - 1); //将当前的绝对路径放在字符串中
 
-            copy_files(buf_path, sentence);
+            copy_files(buf_path, sentence, false);
+            destroy_string(&c_string);
+        }
+        else if (strstr(input_buff, "git commit -m"))
+        {
+            simple_c_string c_string;
+            dismantling_string(input_buff, " ", &c_string);
+            char *sentence = get_string(3, &c_string);
+            remove_char_end(sentence, '\n');
+
+            init_commit(&commit);
+            get_current_time(commit.data, false);
+            strcpy(commit.name, user.name);
+            strcpy(commit.commit, sentence);
+            create_guid(&commit.guid);
+            log_log("版本提交信息为：%s", sentence);
+
             destroy_string(&c_string);
         }
         else if (strstr(input_buff, "git --help"))
@@ -208,7 +224,7 @@ void engine_loop()
             log_log("git remote add origin 添加远程仓库");
             log_log("git --global user.email 添加email");
             log_log("git --global user.name 添加name");
-            log_log("git push 将仓库复制到某个文件夹");
+            log_log("git add 将仓库复制到某个文件夹");
             log_log("git clone 复制文件到此仓库");
             log_log("ssh-keygen -t rsa -C 创建密钥(尚未完成)");
             log_log("exit 退出");
@@ -223,7 +239,7 @@ void engine_loop()
 
 int main(int argc, char *argv[])
 {
-    
+
     // const char *commit_type = argv[1]; //命令
     // const char *path_exe = argv[2];    //exe路径
     // const char *path_icon = argv[3];   //图标
