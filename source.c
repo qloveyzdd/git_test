@@ -12,6 +12,7 @@
 #include "main_core\Public\log.h"
 #include "main_core\Public\git.h"
 #include "main_core\Public\main_core.h"
+#include "simple_c_guid\simple_c_guid.h"
 
 void init_engine()
 {
@@ -170,7 +171,7 @@ void engine_loop()
 
                     char *buf_path = git_remote_origin; //  获取远端路径
 
-                    copy_files(buf_path,sentence);
+                    copy_files(buf_path, sentence);
                 }
                 else if (strstr(input_buff, "git push"))
                 {
@@ -182,7 +183,7 @@ void engine_loop()
                     char buf_path[MAX_PATH] = {0};
                     strcpy(buf_path, git_remote_origin);
 
-                    copy_files(buf_path,sentence);
+                    copy_files(buf_path, sentence);
 
                     destroy_string(&c_string);
                 }
@@ -198,7 +199,7 @@ void engine_loop()
             char buf_path[MAX_PATH];
             _getcwd(buf_path, MAX_PATH - 1); //将当前的绝对路径放在字符串中
 
-            copy_files(buf_path,sentence);
+            copy_files(buf_path, sentence);
             destroy_string(&c_string);
         }
         else if (strstr(input_buff, "git --help"))
@@ -207,6 +208,7 @@ void engine_loop()
             log_log("git remote add origin 添加远程仓库");
             log_log("git --global user.email 添加email");
             log_log("git --global user.name 添加name");
+            log_log("git push 将仓库复制到某个文件夹");
             log_log("git clone 复制文件到此仓库");
             log_log("ssh-keygen -t rsa -C 创建密钥(尚未完成)");
             log_log("exit 退出");
@@ -219,8 +221,9 @@ void engine_loop()
     }
 }
 
-void main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
+    
     // const char *commit_type = argv[1]; //命令
     // const char *path_exe = argv[2];    //exe路径
     // const char *path_icon = argv[3];   //图标
@@ -285,4 +288,6 @@ void main(int argc, char *argv[])
 
     //退出
     exit_engine();
+
+    return 0;
 }

@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/git_test/simple_c_guid/Private/simple_guid.c
+../Public/simple_guid.h
+D:/git_test/simple_c_guid/Public/simple_guid.h
+combaseapi.h
+-
+../../simple_c_string_algorithm/simple_c_string_algorithm.h
+D:/git_test/simple_c_string_algorithm/simple_c_string_algorithm.h
+
+D:/git_test/simple_c_guid/Public/simple_guid.h
+stdbool.h
+-
+
+D:/git_test/simple_c_string_algorithm/Public/string_algorith.h
+
+D:/git_test/simple_c_string_algorithm/simple_c_string_algorithm.h
+Public/string_algorith.h
+D:/git_test/simple_c_string_algorithm/Public/string_algorith.h
+

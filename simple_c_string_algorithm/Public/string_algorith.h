@@ -12,3 +12,7 @@ void remove_string_start(char *str, const char *sub_str);
 void replace_char_inline(char *str, const char sub_char_a, const char sub_char_b);
 //按照printf形式合并字符
 int get_printf(char *buf, char *format, ...);
+//按照printf形式合并字符(标准)
+int get_printf_s(char *out_buf, char *format, ...);
+//切割字符串
+char *string_mid(char *out_buf,const char *in_buf,const int start,const int count);

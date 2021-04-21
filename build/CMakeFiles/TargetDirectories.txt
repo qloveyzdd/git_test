@@ -54,3 +54,10 @@ D:/git_test/build/simple_c_file/CMakeFiles/edit_cache.dir
 D:/git_test/build/simple_c_file/CMakeFiles/rebuild_cache.dir
 D:/git_test/build/simple_c_file/CMakeFiles/list_install_components.dir
 D:/git_test/build/simple_c_file/CMakeFiles/install/strip.dir
+D:/git_test/build/simple_c_guid/CMakeFiles/simple_c_guid.dir
+D:/git_test/build/simple_c_guid/CMakeFiles/install/local.dir
+D:/git_test/build/simple_c_guid/CMakeFiles/install.dir
+D:/git_test/build/simple_c_guid/CMakeFiles/edit_cache.dir
+D:/git_test/build/simple_c_guid/CMakeFiles/rebuild_cache.dir
+D:/git_test/build/simple_c_guid/CMakeFiles/list_install_components.dir
+D:/git_test/build/simple_c_guid/CMakeFiles/install/strip.dir

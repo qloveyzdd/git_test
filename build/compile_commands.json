@@ -48,5 +48,10 @@
   "directory": "D:/git_test/build/simple_c_file",
   "command": "D:\\mingw64\\bin\\gcc.exe -Dsimple_c_file_EXPORTS  -g   -o CMakeFiles\\simple_c_file.dir\\Private\\simple_file.obj   -c D:\\git_test\\simple_c_file\\Private\\simple_file.c",
   "file": "D:/git_test/simple_c_file/Private/simple_file.c"
+},
+{
+  "directory": "D:/git_test/build/simple_c_guid",
+  "command": "D:\\mingw64\\bin\\gcc.exe -Dsimple_c_guid_EXPORTS  -g   -o CMakeFiles\\simple_c_guid.dir\\Private\\simple_guid.obj   -c D:\\git_test\\simple_c_guid\\Private\\simple_guid.c",
+  "file": "D:/git_test/simple_c_guid/Private/simple_guid.c"
 }
 ]

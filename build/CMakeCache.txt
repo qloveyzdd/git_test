@@ -258,6 +258,9 @@ main_core_LIB_DEPENDS:STATIC=general;simple_c_string_algorithm;
 simple_c_file_LIB_DEPENDS:STATIC=general;simple_c_string_algorithm;general;simple_c_helper_file;general;simple_c_path;general;main_core;
 
 //Dependencies for the target
+simple_c_guid_LIB_DEPENDS:STATIC=general;simple_c_string_algorithm;
+
+//Dependencies for the target
 simple_c_helper_file_LIB_DEPENDS:STATIC=general;simple_c_array;
 
 //Dependencies for the target
@@ -379,7 +382,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

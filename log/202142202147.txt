@@ -1,0 +1,11 @@
+远端路径为：D:\SSSS
+将 D:\git_test\.git\logs\refs\remotes\main\main 拉取到 D:\SSSS\.git\logs\refs\remotes\main\main 失败
+将 D:\git_test\.git\refs\remotes\main\main 拉取到 D:\SSSS\.git\refs\remotes\main\main 失败
+数据拉取结束!!!
+找不到命令:
+
+获取可以通过[git --help]的方式查看命令帮助
+将 D:\git_test\.git\logs\refs\remotes\main\main 拉取到 D:\SSSS\.git\logs\refs\remotes\main\main 失败
+将 D:\git_test\.git\refs\remotes\main\main 拉取到 D:\SSSS\.git\refs\remotes\main\main 失败
+数据拉取结束!!!
+退出成功！！

@@ -4,7 +4,7 @@
 typedef struct
 {
     int index;
-    char paths[1024][260];
+    char paths[4096][260];
 } def_c_paths;
 
 void init_def_c_paths(def_c_paths *str);

@@ -14,14 +14,15 @@
 						4,
 						5,
 						6,
-						7
+						7,
+						8
 					],
 					"hasInstallRule" : true,
 					"projectIndex" : 0,
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						7
+						8
 					]
 				},
 				{
@@ -42,7 +43,7 @@
 					"source" : "simple_c_helper_file",
 					"targetIndexes" : 
 					[
-						3
+						4
 					]
 				},
 				{
@@ -52,7 +53,7 @@
 					"source" : "simple_c_string_algorithm",
 					"targetIndexes" : 
 					[
-						5
+						6
 					]
 				},
 				{
@@ -62,7 +63,7 @@
 					"source" : "simple_c_windows",
 					"targetIndexes" : 
 					[
-						6
+						7
 					]
 				},
 				{
@@ -73,7 +74,7 @@
 					"source" : "simple_c_path",
 					"targetIndexes" : 
 					[
-						4
+						5
 					]
 				},
 				{
@@ -97,6 +98,17 @@
 					[
 						2
 					]
+				},
+				{
+					"build" : "simple_c_guid",
+					"hasInstallRule" : true,
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "simple_c_guid",
+					"targetIndexes" : 
+					[
+						3
+					]
 				}
 			],
 			"name" : "DEBUG",
@@ -112,7 +124,8 @@
 						4,
 						5,
 						6,
-						7
+						7,
+						8
 					],
 					"name" : "GIT_TEST",
 					"targetIndexes" : 
@@ -124,7 +137,8 @@
 						4,
 						5,
 						6,
-						7
+						7,
+						8
 					]
 				}
 			],
@@ -147,8 +161,15 @@
 				{
 					"directoryIndex" : 7,
 					"id" : "simple_c_file::@518ec24a656770f27e79",
-					"jsonFile" : "target-simple_c_file-DEBUG-09983cf284bed2684542.json",
+					"jsonFile" : "target-simple_c_file-DEBUG-2f3c20d6287b103def54.json",
 					"name" : "simple_c_file",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "simple_c_guid::@72971323faae9d58fd9b",
+					"jsonFile" : "target-simple_c_guid-DEBUG-5320dddaaa0693132d8e.json",
+					"name" : "simple_c_guid",
 					"projectIndex" : 0
 				},
 				{
@@ -182,7 +203,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "source::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-source-DEBUG-b43483febe61d13acfc4.json",
+					"jsonFile" : "target-source-DEBUG-400540bc997dda2d6de4.json",
 					"name" : "source",
 					"projectIndex" : 0
 				}

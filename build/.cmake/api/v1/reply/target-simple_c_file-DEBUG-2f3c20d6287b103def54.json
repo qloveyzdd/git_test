@@ -118,12 +118,12 @@
 			"id" : "simple_c_string_algorithm::@8c3c14151cc95512536a"
 		},
 		{
-			"backtrace" : 8,
-			"id" : "simple_c_path::@a85f4144b8de1844dd6a"
-		},
-		{
 			"backtrace" : 9,
 			"id" : "main_core::@adf1a919b4167fae519c"
+		},
+		{
+			"backtrace" : 8,
+			"id" : "simple_c_path::@a85f4144b8de1844dd6a"
 		}
 	],
 	"id" : "simple_c_file::@518ec24a656770f27e79",

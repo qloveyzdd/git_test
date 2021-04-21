@@ -7,7 +7,7 @@
 void init_def_c_paths(def_c_paths *str)
 {
     str->index = 0;
-    memset(str->paths, 0, sizeof(str->paths));
+    memset(str->paths, 0, sizeof(str->paths)-1);
 }
 
 int copy_file(const char *src, const char *dest)

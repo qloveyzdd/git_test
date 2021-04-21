@@ -1,8 +1,8 @@
-#include"..\Public\simple_file.h"
-#include"..\..\simple_c_helper_file\simple_c_helper_file.h"
-#include"..\..\simple_c_string_algorithm\simple_c_string_algorithm.h"
-#include"..\..\simple_c_path\simple_c_path.h"
-#include"..\..\main_core\Public\log.h"
+#include "..\Public\simple_file.h"
+#include "..\..\simple_c_helper_file\simple_c_helper_file.h"
+#include "..\..\simple_c_string_algorithm\simple_c_string_algorithm.h"
+#include "..\..\simple_c_path\simple_c_path.h"
+#include "..\..\main_core\Public\log.h"
 #include <string.h>
 #include <stdio.h>
 #define MAX_PATH 260
@@ -41,12 +41,16 @@ void copy_files(const char *src, const char *dest)
 
             if (!(copy_file(paths.paths[i], buf_local_path)))
             {
-                log_success("将 %s 拉取到 %s 成功", paths.paths[i], buf_local_path);
+                //log_success("将 %s 拉取到 %s 成功", paths.paths[i], buf_local_path);
             }
             else
             {
                 log_error("将 %s 拉取到 %s 失败", paths.paths[i], buf_local_path);
             }
+            int b_value = ((double)i / (double)paths.index) * 100 + 1;
+            printf("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
+            printf("当前正在下载远端数据 %3d%%", b_value);
         }
+        log_log("数据拉取结束!!!");
     }
 }

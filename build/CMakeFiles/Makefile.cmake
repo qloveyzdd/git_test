@@ -38,6 +38,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../main_core/CMakeLists.txt"
   "../simple_c_array/CMakeLists.txt"
   "../simple_c_file/CMakeLists.txt"
+  "../simple_c_guid/CMakeLists.txt"
   "../simple_c_helper_file/CMakeLists.txt"
   "../simple_c_path/CMakeLists.txt"
   "../simple_c_string_algorithm/CMakeLists.txt"
@@ -60,6 +61,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "simple_c_path/CMakeFiles/CMakeDirectoryInformation.cmake"
   "main_core/CMakeFiles/CMakeDirectoryInformation.cmake"
   "simple_c_file/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "simple_c_guid/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -72,4 +74,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "simple_c_path/CMakeFiles/simple_c_path.dir/DependInfo.cmake"
   "main_core/CMakeFiles/main_core.dir/DependInfo.cmake"
   "simple_c_file/CMakeFiles/simple_c_file.dir/DependInfo.cmake"
+  "simple_c_guid/CMakeFiles/simple_c_guid.dir/DependInfo.cmake"
   )

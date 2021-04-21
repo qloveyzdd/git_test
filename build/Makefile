@@ -276,6 +276,19 @@ simple_c_file/fast:
 	$(MAKE) -f simple_c_file\CMakeFiles\simple_c_file.dir\build.make simple_c_file/CMakeFiles/simple_c_file.dir/build
 .PHONY : simple_c_file/fast
 
+#=============================================================================
+# Target rules for targets named simple_c_guid
+
+# Build rule for target.
+simple_c_guid: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_guid
+.PHONY : simple_c_guid
+
+# fast build rule for target.
+simple_c_guid/fast:
+	$(MAKE) -f simple_c_guid\CMakeFiles\simple_c_guid.dir\build.make simple_c_guid/CMakeFiles/simple_c_guid.dir/build
+.PHONY : simple_c_guid/fast
+
 # target to build an object file
 source.obj:
 	$(MAKE) -f CMakeFiles\source.dir\build.make CMakeFiles/source.dir/source.obj
@@ -306,6 +319,7 @@ help:
 	@echo ... main_core
 	@echo ... simple_c_array
 	@echo ... simple_c_file
+	@echo ... simple_c_guid
 	@echo ... simple_c_helper_file
 	@echo ... simple_c_path
 	@echo ... simple_c_string_algorithm
