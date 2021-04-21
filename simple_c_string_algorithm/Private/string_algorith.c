@@ -1,5 +1,7 @@
 #include "../Public/string_algorith.h"
 #include <stdarg.h>
+#include <string.h>
+#include<stdlib.h>
 //#define INDEX_NONE -1
 
 void remove_char_start(char *str, const char sub_char)
@@ -36,8 +38,12 @@ int find_string(char *str, const char *sub_str)
         if (str[i] == sub_str[0])
         {
             int j = 0;
-            for (; sub_str[j] != "\0" && str[i + j] == sub_str[j]; j++)
-                ;
+            for (; sub_str[j] != '\0' && str[i + j] == sub_str[j]; j++);
+			// if (str[i+j]=='\0')
+			// {
+			// 	j--;
+			// }
+			
             if (j == len)
             {
                 return i;
@@ -59,7 +65,9 @@ void remove_string_start(char *str, const char *sub_str)
 
 void replace_char_inline(char *str, const char sub_char_a, const char sub_char_b)
 {
-    int index = find_string(str, &sub_char_a);
+	char temp[2] = {0};
+	temp[0] = sub_char_a;
+    int index = find_string(str, temp);
     if (index != -1)
     {
         str[index] = sub_char_b;

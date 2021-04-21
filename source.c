@@ -7,6 +7,7 @@
 #include "simple_c_windows\simple_c_windows.h"
 #include "simple_c_array\simple_c_array.h"
 #include "simple_c_helper_file\simple_c_helper_file.h"
+#include "simple_c_path\simple_c_path.h"
 
 const char git_local_cofg_file[MAX_PATH] = "C:\\local_git\\"; //配置文件路径
 
@@ -198,7 +199,7 @@ void init_engine()
             if ((file_size = fread(buf_cofg, sizeof(char), sizeof(buf_cofg), f)) > 0)
             {
                 simple_c_string c_str_sentence;
-                dismantling_string(file_size, "\n", &c_str_sentence);
+                dismantling_string(buf_cofg, "\n", &c_str_sentence);
                 for (int i = 0; i < c_str_sentence.size; i++)
                 {
                     char *tmp = get_string(i, &c_str_sentence);
@@ -236,7 +237,7 @@ void init_engine()
 
 void exit_engine()
 {
-    set_console_w_color(SIMPLE_BLUE, 0);
+    set_console_w_color(SIMPLE_BLUE, SIMPLE_BLACK);
     log_success("退出成功！！");
 }
 
@@ -246,10 +247,10 @@ void engine_loop()
     int b_exit = 0;              //退出符
     while (!b_exit)
     {
-        set_console_w_color(SIMPLE_BLUE, 0);
+        set_console_w_color(SIMPLE_BLUE, SIMPLE_BLACK);
         printf("输入指令：\r\n");
         printf("\r\n");
-        set_console_w_color(SIMPLE_GREEN, 0);
+        set_console_w_color(SIMPLE_GREEN, SIMPLE_BLACK);
         fgets(input_buff, 1024, stdin);
         if (strstr(input_buff, "exit"))
         {
@@ -319,56 +320,6 @@ void engine_loop()
             //openSSL RSA
             log_error("ssh-keygen -t rsa -C 该指令尚未完成");
         }
-        // else if (strstr(input_buff, "git clone"))
-        // {
-        //     simple_c_string c_string;
-        //     dismantling_string(input_buff, " ", &c_string);
-
-        //     char *sentence = get_string(2, &c_string);
-        //     remove_char_end(sentence, '\n');
-
-        //     simple_c_string c_file;
-        //     if (strstr(sentence, "\\"))
-        //     {
-        //         dismantling_string(sentence, "\\", &c_file);
-        //     }
-        //     else if (strstr(sentence, "/"))
-        //     {
-        //         dismantling_string(sentence, "/", &c_file);
-        //     }
-        //     else
-        //     {
-        //         log_error("无效 非标准路径 %s", sentence);
-        //         break;
-        //     }
-        //     char *file_value = get_string(c_file.size, &c_file);
-
-        //     char buf_path[MAX_PATH];
-        //     _gitcwd(buf_path, MAX_PATH - 1);
-
-        //     char buf_local_path[MAX_PATH] = {0};
-        //     get_printf(buf_local_path, "%s\\%s\\", buf_path, file_value);
-
-        //     def_c_paths paths;
-        //     find_files(sentence, &paths, true);
-        //     for (int i = 0; i < paths.index; i++)
-        //     {
-        //         char buf_tmp[MAX_PATH];
-        //         strcpy(buf_tmp,paths.paths[i]);
-        //         remove_string_start(buf_tmp,sentence);
-        //         strcat(buf_local_path,buf_tmp);
-
-        //         if (!(copy_file(paths.paths[i],buf_local_path)))
-        //         {
-        //             log_success("将 %s 拉取到 %s 成功",paths.paths[i],buf_local_path);
-        //         }
-        //         else
-        //         {
-        //            log_error("将 %s 拉取到 %s 失败",paths.paths[i],buf_local_path);
-        //         }
-
-        //     }
-        // }
         else if (strstr(input_buff, "git clone"))
         {
             simple_c_string c_string;
@@ -384,7 +335,7 @@ void engine_loop()
             else
             {
                 char buf_path[MAX_PATH];
-                _getcwd(buf_path, MAX_PATH - 1);
+                _getcwd(buf_path, MAX_PATH - 1);//将当前的绝对路径放在字符串中
 
                 def_c_paths paths;
                 init_def_c_paths(&paths);
@@ -397,6 +348,20 @@ void engine_loop()
                     char buf_local_path[MAX_PATH] = {0};
                     strcpy(buf_local_path, buf_path);
                     strcat(buf_local_path, buf_tmp);
+
+                    {
+                        char buf_local_path_tmp[MAX_PATH] = {0};
+                        strcpy(buf_local_path_tmp, buf_local_path);
+                        get_path_directory_inline(buf_local_path_tmp);
+                        
+
+                        if (create_file_directory(buf_local_path_tmp)==false)
+                        {
+                            log_error("当前路径下内容无法拷贝：%s",buf_local_path_tmp);
+                            break;
+                        }
+                        
+                    }
 
                     if (!(copy_file(paths.paths[i], buf_local_path)))
                     {
@@ -430,7 +395,6 @@ void engine_loop()
 
 void main(int argc, char *argv[])
 {
-
     // const char *commit_type = argv[1]; //命令
     // const char *path_exe = argv[2];    //exe路径
     // const char *path_icon = argv[3];   //图标

@@ -252,10 +252,13 @@ GIT_TEST_SOURCE_DIR:STATIC=D:/git_test
 LIBRARY_OUTPUT_PATH:PATH=
 
 //Dependencies for the target
-simple_file_helper_shared_LIB_DEPENDS:STATIC=general;simple_c_array_static;
+simple_file_helper_LIB_DEPENDS:STATIC=general;simple_c_array;
 
 //Dependencies for the target
-simple_file_helper_static_LIB_DEPENDS:STATIC=general;simple_c_array_static;
+simple_path_file_LIB_DEPENDS:STATIC=general;simple_c_array;general;simple_c_string_algorithm;
+
+//Dependencies for the target
+simple_path_file_shared_LIB_DEPENDS:STATIC=general;simple_c_array_static;general;simple_c_string_algorithm_lib;
 
 
 ########################
@@ -364,7 +367,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

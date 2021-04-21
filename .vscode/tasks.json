@@ -30,35 +30,6 @@
         },
         {
             "type":"shell",
-            "label": "A",
-            "command":"del",
-            "args": [
-                "${workspaceFolder}/build/*.dll",
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}/build"
-            },
-            "dependsOn": [
-                "cmakerun"
-            ],
-        },
-        {
-            "type":"shell",
-            "label": "A1",
-            "command":"move",
-            "args": [
-                "${workspaceFolder}/build/simple_c_helper_file/*.dll",
-                "${workspaceFolder}/build",
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}/build"
-            },
-            "dependsOn": [
-                "A"
-            ],
-        },
-        {
-            "type":"shell",
             "label": "makerun",
             "command":"mingw32-make.exe",
             "args": [],
@@ -66,7 +37,7 @@
                 "cwd": "${workspaceFolder}/build"
             },
             "dependsOn": [
-                "A1"
+                "cmakerun"
             ],
         },
     ],

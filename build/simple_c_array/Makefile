@@ -72,6 +72,30 @@ CMAKE_BINARY_DIR = D:\git_test\build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -93,6 +117,28 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -127,33 +173,33 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-simple_c_array/CMakeFiles/simple_c_array_static.dir/rule:
-	cd /d D:\git_test\build && $(MAKE) -f CMakeFiles\Makefile2 simple_c_array/CMakeFiles/simple_c_array_static.dir/rule
-.PHONY : simple_c_array/CMakeFiles/simple_c_array_static.dir/rule
+simple_c_array/CMakeFiles/simple_c_array.dir/rule:
+	cd /d D:\git_test\build && $(MAKE) -f CMakeFiles\Makefile2 simple_c_array/CMakeFiles/simple_c_array.dir/rule
+.PHONY : simple_c_array/CMakeFiles/simple_c_array.dir/rule
 
 # Convenience name for target.
-simple_c_array_static: simple_c_array/CMakeFiles/simple_c_array_static.dir/rule
+simple_c_array: simple_c_array/CMakeFiles/simple_c_array.dir/rule
 
-.PHONY : simple_c_array_static
+.PHONY : simple_c_array
 
 # fast build rule for target.
-simple_c_array_static/fast:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_array\CMakeFiles\simple_c_array_static.dir\build.make simple_c_array/CMakeFiles/simple_c_array_static.dir/build
-.PHONY : simple_c_array_static/fast
+simple_c_array/fast:
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_array\CMakeFiles\simple_c_array.dir\build.make simple_c_array/CMakeFiles/simple_c_array.dir/build
+.PHONY : simple_c_array/fast
 
 # target to build an object file
 Private/simple_c_array_string.obj:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_array\CMakeFiles\simple_c_array_static.dir\build.make simple_c_array/CMakeFiles/simple_c_array_static.dir/Private/simple_c_array_string.obj
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_array\CMakeFiles\simple_c_array.dir\build.make simple_c_array/CMakeFiles/simple_c_array.dir/Private/simple_c_array_string.obj
 .PHONY : Private/simple_c_array_string.obj
 
 # target to preprocess a source file
 Private/simple_c_array_string.i:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_array\CMakeFiles\simple_c_array_static.dir\build.make simple_c_array/CMakeFiles/simple_c_array_static.dir/Private/simple_c_array_string.i
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_array\CMakeFiles\simple_c_array.dir\build.make simple_c_array/CMakeFiles/simple_c_array.dir/Private/simple_c_array_string.i
 .PHONY : Private/simple_c_array_string.i
 
 # target to generate assembly for a file
 Private/simple_c_array_string.s:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_array\CMakeFiles\simple_c_array_static.dir\build.make simple_c_array/CMakeFiles/simple_c_array_static.dir/Private/simple_c_array_string.s
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_array\CMakeFiles\simple_c_array.dir\build.make simple_c_array/CMakeFiles/simple_c_array.dir/Private/simple_c_array_string.s
 .PHONY : Private/simple_c_array_string.s
 
 # Help Target
@@ -163,8 +209,12 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... edit_cache
+	@echo ... install
+	@echo ... install/local
+	@echo ... install/strip
+	@echo ... list_install_components
 	@echo ... rebuild_cache
-	@echo ... simple_c_array_static
+	@echo ... simple_c_array
 	@echo ... Private/simple_c_array_string.obj
 	@echo ... Private/simple_c_array_string.i
 	@echo ... Private/simple_c_array_string.s

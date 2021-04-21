@@ -1,0 +1,2 @@
+D:\mingw64\bin\ar.exe qc libsimple_c_windows.a  CMakeFiles/simple_c_windows.dir/Private/simple_c_windows_setting.obj
+D:\mingw64\bin\ranlib.exe libsimple_c_windows.a

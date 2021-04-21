@@ -72,6 +72,42 @@ CMAKE_BINARY_DIR = D:\git_test\build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -93,6 +129,16 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -127,33 +173,33 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm_lib.dir/rule:
-	cd /d D:\git_test\build && $(MAKE) -f CMakeFiles\Makefile2 simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm_lib.dir/rule
-.PHONY : simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm_lib.dir/rule
+simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/rule:
+	cd /d D:\git_test\build && $(MAKE) -f CMakeFiles\Makefile2 simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/rule
+.PHONY : simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/rule
 
 # Convenience name for target.
-simple_c_string_algorithm_lib: simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm_lib.dir/rule
+simple_c_string_algorithm: simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/rule
 
-.PHONY : simple_c_string_algorithm_lib
+.PHONY : simple_c_string_algorithm
 
 # fast build rule for target.
-simple_c_string_algorithm_lib/fast:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm_lib.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm_lib.dir/build
-.PHONY : simple_c_string_algorithm_lib/fast
+simple_c_string_algorithm/fast:
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/build
+.PHONY : simple_c_string_algorithm/fast
 
 # target to build an object file
 Private/string_algorith.obj:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm_lib.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm_lib.dir/Private/string_algorith.obj
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/Private/string_algorith.obj
 .PHONY : Private/string_algorith.obj
 
 # target to preprocess a source file
 Private/string_algorith.i:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm_lib.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm_lib.dir/Private/string_algorith.i
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/Private/string_algorith.i
 .PHONY : Private/string_algorith.i
 
 # target to generate assembly for a file
 Private/string_algorith.s:
-	cd /d D:\git_test\build && $(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm_lib.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm_lib.dir/Private/string_algorith.s
+	cd /d D:\git_test\build && $(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/Private/string_algorith.s
 .PHONY : Private/string_algorith.s
 
 # Help Target
@@ -163,8 +209,12 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... edit_cache
+	@echo ... install
+	@echo ... install/local
+	@echo ... install/strip
+	@echo ... list_install_components
 	@echo ... rebuild_cache
-	@echo ... simple_c_string_algorithm_lib
+	@echo ... simple_c_string_algorithm
 	@echo ... Private/string_algorith.obj
 	@echo ... Private/string_algorith.i
 	@echo ... Private/string_algorith.s

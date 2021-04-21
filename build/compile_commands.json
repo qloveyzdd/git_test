@@ -6,22 +6,27 @@
 },
 {
   "directory": "D:/git_test/build/simple_c_array",
-  "command": "D:\\mingw64\\bin\\gcc.exe  @CMakeFiles/simple_c_array_static.dir/includes_C.rsp -g   -o CMakeFiles\\simple_c_array_static.dir\\Private\\simple_c_array_string.obj   -c D:\\git_test\\simple_c_array\\Private\\simple_c_array_string.c",
+  "command": "D:\\mingw64\\bin\\gcc.exe   -g   -o CMakeFiles\\simple_c_array.dir\\Private\\simple_c_array_string.obj   -c D:\\git_test\\simple_c_array\\Private\\simple_c_array_string.c",
   "file": "D:/git_test/simple_c_array/Private/simple_c_array_string.c"
 },
 {
   "directory": "D:/git_test/build/simple_c_helper_file",
-  "command": "D:\\mingw64\\bin\\gcc.exe -Dsimple_file_helper_shared_EXPORTS  -g   -o CMakeFiles\\simple_file_helper_shared.dir\\Private\\simple_file_helper.obj   -c D:\\git_test\\simple_c_helper_file\\Private\\simple_file_helper.c",
+  "command": "D:\\mingw64\\bin\\gcc.exe -Dsimple_file_helper_EXPORTS  -g   -o CMakeFiles\\simple_file_helper.dir\\Private\\simple_file_helper.obj   -c D:\\git_test\\simple_c_helper_file\\Private\\simple_file_helper.c",
   "file": "D:/git_test/simple_c_helper_file/Private/simple_file_helper.c"
 },
 {
   "directory": "D:/git_test/build/simple_c_string_algorithm",
-  "command": "D:\\mingw64\\bin\\gcc.exe   -g   -o CMakeFiles\\simple_c_string_algorithm_lib.dir\\Private\\string_algorith.obj   -c D:\\git_test\\simple_c_string_algorithm\\Private\\string_algorith.c",
+  "command": "D:\\mingw64\\bin\\gcc.exe   -g   -o CMakeFiles\\simple_c_string_algorithm.dir\\Private\\string_algorith.obj   -c D:\\git_test\\simple_c_string_algorithm\\Private\\string_algorith.c",
   "file": "D:/git_test/simple_c_string_algorithm/Private/string_algorith.c"
 },
 {
   "directory": "D:/git_test/build/simple_c_windows",
-  "command": "D:\\mingw64\\bin\\gcc.exe   -g   -o CMakeFiles\\simple_c_windows_lib.dir\\Private\\simple_c_windows_setting.obj   -c D:\\git_test\\simple_c_windows\\Private\\simple_c_windows_setting.c",
+  "command": "D:\\mingw64\\bin\\gcc.exe   -g   -o CMakeFiles\\simple_c_windows.dir\\Private\\simple_c_windows_setting.obj   -c D:\\git_test\\simple_c_windows\\Private\\simple_c_windows_setting.c",
   "file": "D:/git_test/simple_c_windows/Private/simple_c_windows_setting.c"
+},
+{
+  "directory": "D:/git_test/build/simple_c_path",
+  "command": "D:\\mingw64\\bin\\gcc.exe -Dsimple_path_file_EXPORTS  -g   -o CMakeFiles\\simple_path_file.dir\\Private\\simple_path.obj   -c D:\\git_test\\simple_c_path\\Private\\simple_path.c",
+  "file": "D:/git_test/simple_c_path/Private/simple_path.c"
 }
 ]

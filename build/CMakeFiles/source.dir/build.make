@@ -95,11 +95,11 @@ source_EXTERNAL_OBJECTS =
 
 source.exe: CMakeFiles/source.dir/source.obj
 source.exe: CMakeFiles/source.dir/build.make
-source.exe: simple_c_array/libsimple_c_array_static.a
-source.exe: simple_c_helper_file/libsimple_file_helper_shared.dll.a
-source.exe: simple_c_string_algorithm/libsimple_c_string_algorithm_lib.a
-source.exe: simple_c_windows/libsimple_c_windows_lib.a
-source.exe: simple_c_array/libsimple_c_array_static.a
+source.exe: simple_c_array/libsimple_c_array.a
+source.exe: lib/libsimple_file_helper.dll.a
+source.exe: simple_c_string_algorithm/libsimple_c_string_algorithm.a
+source.exe: simple_c_windows/libsimple_c_windows.a
+source.exe: lib/libsimple_path_file.dll.a
 source.exe: CMakeFiles/source.dir/linklibs.rsp
 source.exe: CMakeFiles/source.dir/objects1.rsp
 source.exe: CMakeFiles/source.dir/link.txt

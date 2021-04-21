@@ -1,0 +1,2 @@
+D:\mingw64\bin\ar.exe qc libsimple_c_string_algorithm.a  CMakeFiles/simple_c_string_algorithm.dir/Private/string_algorith.obj
+D:\mingw64\bin\ranlib.exe libsimple_c_string_algorithm.a

@@ -72,6 +72,30 @@ CMAKE_BINARY_DIR = D:\git_test\build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -93,6 +117,28 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	D:\cmake-3.17.0-rc3-win64-x64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -140,56 +186,69 @@ source/fast:
 .PHONY : source/fast
 
 #=============================================================================
-# Target rules for targets named simple_c_array_static
+# Target rules for targets named simple_c_array
 
 # Build rule for target.
-simple_c_array_static: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 simple_c_array_static
-.PHONY : simple_c_array_static
+simple_c_array: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_array
+.PHONY : simple_c_array
 
 # fast build rule for target.
-simple_c_array_static/fast:
-	$(MAKE) -f simple_c_array\CMakeFiles\simple_c_array_static.dir\build.make simple_c_array/CMakeFiles/simple_c_array_static.dir/build
-.PHONY : simple_c_array_static/fast
+simple_c_array/fast:
+	$(MAKE) -f simple_c_array\CMakeFiles\simple_c_array.dir\build.make simple_c_array/CMakeFiles/simple_c_array.dir/build
+.PHONY : simple_c_array/fast
 
 #=============================================================================
-# Target rules for targets named simple_file_helper_shared
+# Target rules for targets named simple_file_helper
 
 # Build rule for target.
-simple_file_helper_shared: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 simple_file_helper_shared
-.PHONY : simple_file_helper_shared
+simple_file_helper: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_file_helper
+.PHONY : simple_file_helper
 
 # fast build rule for target.
-simple_file_helper_shared/fast:
-	$(MAKE) -f simple_c_helper_file\CMakeFiles\simple_file_helper_shared.dir\build.make simple_c_helper_file/CMakeFiles/simple_file_helper_shared.dir/build
-.PHONY : simple_file_helper_shared/fast
+simple_file_helper/fast:
+	$(MAKE) -f simple_c_helper_file\CMakeFiles\simple_file_helper.dir\build.make simple_c_helper_file/CMakeFiles/simple_file_helper.dir/build
+.PHONY : simple_file_helper/fast
 
 #=============================================================================
-# Target rules for targets named simple_c_string_algorithm_lib
+# Target rules for targets named simple_c_string_algorithm
 
 # Build rule for target.
-simple_c_string_algorithm_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 simple_c_string_algorithm_lib
-.PHONY : simple_c_string_algorithm_lib
+simple_c_string_algorithm: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_string_algorithm
+.PHONY : simple_c_string_algorithm
 
 # fast build rule for target.
-simple_c_string_algorithm_lib/fast:
-	$(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm_lib.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm_lib.dir/build
-.PHONY : simple_c_string_algorithm_lib/fast
+simple_c_string_algorithm/fast:
+	$(MAKE) -f simple_c_string_algorithm\CMakeFiles\simple_c_string_algorithm.dir\build.make simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/build
+.PHONY : simple_c_string_algorithm/fast
 
 #=============================================================================
-# Target rules for targets named simple_c_windows_lib
+# Target rules for targets named simple_c_windows
 
 # Build rule for target.
-simple_c_windows_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 simple_c_windows_lib
-.PHONY : simple_c_windows_lib
+simple_c_windows: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_c_windows
+.PHONY : simple_c_windows
 
 # fast build rule for target.
-simple_c_windows_lib/fast:
-	$(MAKE) -f simple_c_windows\CMakeFiles\simple_c_windows_lib.dir\build.make simple_c_windows/CMakeFiles/simple_c_windows_lib.dir/build
-.PHONY : simple_c_windows_lib/fast
+simple_c_windows/fast:
+	$(MAKE) -f simple_c_windows\CMakeFiles\simple_c_windows.dir\build.make simple_c_windows/CMakeFiles/simple_c_windows.dir/build
+.PHONY : simple_c_windows/fast
+
+#=============================================================================
+# Target rules for targets named simple_path_file
+
+# Build rule for target.
+simple_path_file: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 simple_path_file
+.PHONY : simple_path_file
+
+# fast build rule for target.
+simple_path_file/fast:
+	$(MAKE) -f simple_c_path\CMakeFiles\simple_path_file.dir\build.make simple_c_path/CMakeFiles/simple_path_file.dir/build
+.PHONY : simple_path_file/fast
 
 # target to build an object file
 source.obj:
@@ -213,11 +272,16 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... edit_cache
+	@echo ... install
+	@echo ... install/local
+	@echo ... install/strip
+	@echo ... list_install_components
 	@echo ... rebuild_cache
-	@echo ... simple_c_array_static
-	@echo ... simple_c_string_algorithm_lib
-	@echo ... simple_c_windows_lib
-	@echo ... simple_file_helper_shared
+	@echo ... simple_c_array
+	@echo ... simple_c_string_algorithm
+	@echo ... simple_c_windows
+	@echo ... simple_file_helper
+	@echo ... simple_path_file
 	@echo ... source
 	@echo ... source.obj
 	@echo ... source.i

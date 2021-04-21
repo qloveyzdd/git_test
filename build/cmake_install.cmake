@@ -38,6 +38,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("D:/git_test/build/simple_c_helper_file/cmake_install.cmake")
   include("D:/git_test/build/simple_c_string_algorithm/cmake_install.cmake")
   include("D:/git_test/build/simple_c_windows/cmake_install.cmake")
+  include("D:/git_test/build/simple_c_path/cmake_install.cmake")
 
 endif()
 

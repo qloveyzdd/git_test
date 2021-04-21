@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "simple_c_array_string.h": "c"
+        "simple_c_array_string.h": "c",
+        "simple_c_array.h": "c"
     }
 }

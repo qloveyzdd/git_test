@@ -1,6 +1,7 @@
 #include "..\Public\simple_file_helper.h"
 #include "..\..\simple_c_array\simple_c_array.h"
 #include <stdio.h>
+#include<direct.h>
 #include <io.h>
 
 void init_def_c_paths(def_c_paths *str)
@@ -78,7 +79,7 @@ void find_files(const char *in_path, def_c_paths *str, bool b_brecursion)
 bool create_file(const char *filename)
 {
     FILE *f = NULL;
-    if ((f = fopen(filename, "r+") != NULL))
+    if ((f = fopen(filename, "r+")) != NULL)
     {
         fclose(f);
         return true;
@@ -99,7 +100,7 @@ bool create_file_directory(const char *in_path)
     }
     else
     {
-        // log_error("无效，非标准路径，请检查%s", in_path);
+        printf("无效，非标准路径，请检查%s", in_path);
         return false;
     }
 
@@ -115,4 +116,5 @@ bool create_file_directory(const char *in_path)
     }
 
     destroy_string(&c_file);
+    return _access(path, 0) == 0;
 }

@@ -1,0 +1,1 @@
+  -LD:/git_test/simple_c_path/../simple_c_array  -LD:/git_test/simple_c_path/../simple_c_string_algorithm  ../simple_c_array/libsimple_c_array.a ../simple_c_string_algorithm/libsimple_c_string_algorithm.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
