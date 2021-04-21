@@ -90,6 +90,7 @@ bool create_file(const char *filename)
 bool create_file_directory(const char *in_path)
 {
     simple_c_string c_file;
+    init_string(&c_file);
     if (strstr(in_path, "\\"))
     {
         dismantling_string(in_path, "\\", &c_file);
@@ -113,6 +114,7 @@ bool create_file_directory(const char *in_path)
         {
             _mkdir(path);
         }
+        path[strlen(path)] = '/';
     }
 
     destroy_string(&c_file);
