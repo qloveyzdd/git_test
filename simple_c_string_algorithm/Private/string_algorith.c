@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+
 //#define INDEX_NONE -1
 
 void remove_char_start(char *str, const char sub_char)
@@ -158,3 +159,4 @@ char *string_mid(char *out_buf,const char *in_buf,const int start,const int coun
 
 	return out_buf;
 }
+

@@ -17,3 +17,5 @@ bool create_file(const char *filename);
 
 bool create_file_directory(const char *in_path);
 
+bool get_file_buf(char *buf,const char *path);
+

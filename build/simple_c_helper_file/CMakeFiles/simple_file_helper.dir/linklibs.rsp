@@ -1,1 +1,0 @@
-  -LD:/git_test/simple_c_helper_file/../simple_c_array  ../simple_c_array/libsimple_c_array.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

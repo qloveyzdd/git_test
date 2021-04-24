@@ -6,21 +6,3 @@
 
 #IncludeRegexTransform: 
 
-D:/git_test/main_core/Private/main_core.c
-../Public/main_core.h
-D:/git_test/main_core/Public/main_core.h
-
-D:/git_test/main_core/Public/main_core.h
-windows.h
-D:/git_test/main_core/Public/windows.h
-../../simple_c_guid/simple_c_guid.h
-D:/git_test/simple_c_guid/simple_c_guid.h
-
-D:/git_test/simple_c_guid/Public/simple_guid.h
-stdbool.h
--
-
-D:/git_test/simple_c_guid/simple_c_guid.h
-Public/simple_guid.h
-D:/git_test/simple_c_guid/Public/simple_guid.h
-

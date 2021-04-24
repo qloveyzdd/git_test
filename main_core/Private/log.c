@@ -2,6 +2,7 @@
 #include "..\..\simple_c_string_algorithm\simple_c_string_algorithm.h"
 #include <direct.h>
 #include <stdio.h>
+#include"..\Public\git.h"
 
 void get_current_time(char *buf_time, bool cn_zh)
 {
@@ -56,8 +57,11 @@ char *get_log_path()
 {
     if (git_log_path[0] == '\0') //判读log是否存在
     {
+        char *p = get_git_project_path();
+
         char tmp_path[256] = {0}; //临时路径存储
-        strcat(tmp_path, ".\\log\\");
+        strcpy(tmp_path,p);
+        strcat(tmp_path,"log\\");
         _mkdir(tmp_path); //创建log文件夹
 
         char buf[256] = {0};

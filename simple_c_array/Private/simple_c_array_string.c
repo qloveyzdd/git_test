@@ -50,3 +50,16 @@ void dismantling_string(const char *in_data, const char *str_sub, simple_c_strin
         p = strtok(NULL, str_sub);
     }
 }
+
+char *dismantling_string_by_index(char *buf,const char *split_str,const char *sub_str,int index)
+{
+	simple_c_string c_str_param;
+	dismantling_string(split_str,sub_str,&c_str_param);
+	char*p = get_string(index,&c_str_param);
+    p[strlen(p)] = p[strlen(p)+1];
+
+	strcpy(buf,p);
+	destroy_string(&c_str_param);
+
+	return buf;
+}

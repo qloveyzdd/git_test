@@ -7,7 +7,7 @@
 void init_def_c_paths(def_c_paths *str)
 {
     str->index = 0;
-    memset(str->paths, 0, sizeof(str->paths)-1);
+    memset(str->paths, 0, sizeof(str->paths) - 1);
 }
 
 int copy_file(const char *src, const char *dest)
@@ -79,7 +79,7 @@ void find_files(const char *in_path, def_c_paths *str, bool b_brecursion)
 bool create_file(const char *filename)
 {
     FILE *f = NULL;
-    if ((f = fopen(filename, "r+")) != NULL)
+    if ((f = fopen(filename, "w+")) != NULL)
     {
         fclose(f);
         return true;
@@ -121,3 +121,22 @@ bool create_file_directory(const char *in_path)
     return _access(path, 0) == 0;
 }
 
+bool get_file_buf(char *buf, const char *path)
+{
+    //文件大小
+    char buf_temp[512] = {0};
+    //拷贝大小
+    FILE *f_src = NULL;
+    if ((f_src = fopen(path, "r")) != NULL)
+    {
+        int file_tmp = 0;
+        while ((file_tmp = fread(buf_temp, sizeof(char), 512, path)) > 0)
+        {
+            strcat(buf, buf_temp);
+            memset(buf_temp,0,sizeof(buf_temp));
+        }
+        fclose(f_src);
+        return true;
+    }
+    return false;
+}

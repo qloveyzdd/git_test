@@ -16,59 +16,9 @@
 
 void init_engine()
 {
-    char cofg_path_buf[MAX_PATH] = {0};
-    _mkdir(git_local_cofg_file);
-    strcpy(cofg_path_buf, git_local_cofg_file);
-    strcat(cofg_path_buf, "git_confg.ini");
-
-    if (_access(cofg_path_buf, 0) == -1) //判断文件是否存在
-    {
-        create_file(cofg_path_buf);
-    }
-    else
-    {
-        char buf_cofg[1024 * 10] = {0};
-        FILE *f = NULL;
-        int file_size = 0;
-        if ((f = fopen(cofg_path_buf, "a")) != NULL)
-        {
-            if ((file_size = fread(buf_cofg, sizeof(char), sizeof(buf_cofg), f)) > 0)
-            {
-                simple_c_string c_str_sentence;
-                dismantling_string(buf_cofg, "\n", &c_str_sentence);
-                for (int i = 0; i < c_str_sentence.size; i++)
-                {
-                    char *tmp = get_string(i, &c_str_sentence);
-                    if (strstr(tmp, "name="))
-                    {
-                        simple_c_string c_str_param;
-                        dismantling_string(tmp, "=", &c_str_param);
-                        char *value = get_string(1, &c_str_param);
-                        strcpy(user.name, value);
-                        destroy_string(&c_str_param);
-                    }
-                    else if (strstr(tmp, "password="))
-                    {
-                        simple_c_string c_str_param;
-                        dismantling_string(tmp, "=", &c_str_param);
-                        char *value = get_string(1, &c_str_param);
-                        strcpy(user.password, value);
-                        destroy_string(&c_str_param);
-                    }
-                    else if (strstr(tmp, "remote_origin="))
-                    {
-                        simple_c_string c_str_param;
-                        dismantling_string(tmp, "=", &c_str_param);
-                        char *value = get_string(1, &c_str_param);
-                        strcpy(git_remote_origin, value);
-                        destroy_string(&c_str_param);
-                    }
-                }
-
-                destroy_string(&c_str_sentence);
-            }
-        }
-    }
+    commit.b_init = false;
+    //读取用户配置表
+    read_user();
 }
 
 void exit_engine()
@@ -94,8 +44,24 @@ void engine_loop()
         }
         else if (strstr(input_buff, "git init"))
         {
-            char *p = get_git_init();
-            log_success("当前git[%s]初始化成功", p);
+            char tmp_path[MAX_PATH] = {0};
+            strcat(tmp_path,".\\git\\");
+
+            _mkdir(tmp_path);
+            strcat(tmp_path,"git.txt");
+
+            if (create_file(tmp_path))
+            {
+                char*p = get_git_project_path();
+                log_success("初始化[%s]路径",p);
+            }
+            else
+            {
+                log_error("初始化git路径");
+            }
+            
+            
+            
         }
         else if (strstr(input_buff, "git remote add origin"))
         {
@@ -117,39 +83,21 @@ void engine_loop()
         }
         else if (strstr(input_buff, "git --global user.email"))
         {
-            simple_c_string c_string;
-            dismantling_string(input_buff, " ", &c_string);
-
-            char *sentence = get_string(3, &c_string);
-            remove_char_end(sentence, '\n');
-
-            strcpy(user.email, sentence);
-
-            char cat[256] = {0};
-            strcat(cat, "email为：");
-            strcat(cat, sentence);
-
-            log_success(cat);
-
-            destroy_string(&c_string);
+            dismantling_string_by_index(user.email,input_buff," ",3);
+            save_user();
+            log_success("设置email为：%s",user.email);
         }
         else if (strstr(input_buff, "git --global user.name"))
         {
-            simple_c_string c_string;
-            dismantling_string(input_buff, " ", &c_string);
-
-            char *sentence = get_string(3, &c_string);
-            remove_char_end(sentence, '\n');
-
-            strcpy(user.name, sentence);
-
-            char cat[256] = {0};
-            strcat(cat, "name为：");
-            strcat(cat, sentence);
-
-            log_success(cat);
-
-            destroy_string(&c_string);
+            dismantling_string_by_index(user.name,input_buff," ",3);
+            save_user();
+            log_success("设置name为：%s",user.name);
+        }
+        else if (strstr(input_buff, "git --global user.password"))
+        {
+            dismantling_string_by_index(user.password,input_buff," ",3);
+            save_user();
+            log_success("设置password为：%s",user.password);
         }
         else if (strstr(input_buff, "ssh-keygen -t rsa -C"))
         {
@@ -217,6 +165,25 @@ void engine_loop()
             log_log("版本提交信息为：%s", sentence);
 
             destroy_string(&c_string);
+        }
+        else if (strstr(input_buff, "git push -u origin master"))
+        {
+            for (int i = 0; i < git_path_2ds.size; i++)
+            {
+                if (!(copy_file(git_path_2ds.paths[i].path_src, git_path_2ds.paths[i].path_dis)))
+                {
+                    //log_success("将 %s 拉取到 %s 成功", paths.paths[i], buf_local_path);
+                }
+                else
+                {
+                    log_error("将 %s 拉取到 %s 失败", git_path_2ds.paths[i].path_src, git_path_2ds.paths[i].path_dis);
+                }
+            }
+            log_log("数据拉取结束!!!");
+        }
+        else if (strstr(input_buff, "git push"))
+        {
+            
         }
         else if (strstr(input_buff, "git --help"))
         {
