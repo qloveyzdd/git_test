@@ -20,9 +20,9 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "D:/git_test/build/simple_c_string_algorithm/CMakeFiles/simple_c_string_algorithm.dir/DependInfo.cmake"
+  "D:/git_test/build/simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/DependInfo.cmake"
   "D:/git_test/build/simple_c_path/CMakeFiles/simple_c_path.dir/DependInfo.cmake"
   "D:/git_test/build/main_core/CMakeFiles/main_core.dir/DependInfo.cmake"
-  "D:/git_test/build/simple_c_helper_file/CMakeFiles/simple_c_helper_file.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

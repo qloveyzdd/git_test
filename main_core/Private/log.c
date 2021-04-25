@@ -1,8 +1,6 @@
 #include "..\Public\log.h"
-#include "..\..\simple_c_string_algorithm\simple_c_string_algorithm.h"
 #include <direct.h>
 #include <stdio.h>
-#include"..\Public\git.h"
 
 void get_current_time(char *buf_time, bool cn_zh)
 {

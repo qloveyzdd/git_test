@@ -4,20 +4,18 @@
 main_core/CMakeFiles/main_core.dir/Private/git.obj
  D:/git_test/main_core/Private/git.c
  D:/git_test/main_core/Public/git.h
+ D:/git_test/simple_c_array/Public/Core/simple_array_c_macro.h
+ D:/git_test/simple_c_array/Public/simple_c_array_string.h
+ D:/git_test/simple_c_array/simple_c_array.h
 main_core/CMakeFiles/main_core.dir/Private/log.obj
  D:/git_test/main_core/Private/log.c
  D:/git_test/main_core/Public/log.h
- D:/git_test/simple_c_string_algorithm/Public/string_algorith.h
- D:/git_test/simple_c_string_algorithm/simple_c_string_algorithm.h
 main_core/CMakeFiles/main_core.dir/Private/main_core.obj
  D:/git_test/main_core/Private/main_core.c
+ D:/git_test/main_core/Public/git.h
  D:/git_test/main_core/Public/main_core.h
  D:/git_test/simple_c_array/Public/Core/simple_array_c_macro.h
  D:/git_test/simple_c_array/Public/simple_c_array_string.h
  D:/git_test/simple_c_array/simple_c_array.h
  D:/git_test/simple_c_guid/Public/simple_guid.h
  D:/git_test/simple_c_guid/simple_c_guid.h
- D:/git_test/simple_c_helper_file/Public/simple_file_helper.h
- D:/git_test/simple_c_helper_file/simple_c_helper_file.h
- D:/git_test/simple_c_string_algorithm/Public/string_algorith.h
- D:/git_test/simple_c_string_algorithm/simple_c_string_algorithm.h

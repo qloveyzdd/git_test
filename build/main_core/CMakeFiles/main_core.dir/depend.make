@@ -3,21 +3,19 @@
 
 main_core/CMakeFiles/main_core.dir/Private/git.obj: ../main_core/Private/git.c
 main_core/CMakeFiles/main_core.dir/Private/git.obj: ../main_core/Public/git.h
+main_core/CMakeFiles/main_core.dir/Private/git.obj: ../simple_c_array/Public/Core/simple_array_c_macro.h
+main_core/CMakeFiles/main_core.dir/Private/git.obj: ../simple_c_array/Public/simple_c_array_string.h
+main_core/CMakeFiles/main_core.dir/Private/git.obj: ../simple_c_array/simple_c_array.h
 
 main_core/CMakeFiles/main_core.dir/Private/log.obj: ../main_core/Private/log.c
 main_core/CMakeFiles/main_core.dir/Private/log.obj: ../main_core/Public/log.h
-main_core/CMakeFiles/main_core.dir/Private/log.obj: ../simple_c_string_algorithm/Public/string_algorith.h
-main_core/CMakeFiles/main_core.dir/Private/log.obj: ../simple_c_string_algorithm/simple_c_string_algorithm.h
 
 main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../main_core/Private/main_core.c
+main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../main_core/Public/git.h
 main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../main_core/Public/main_core.h
 main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../simple_c_array/Public/Core/simple_array_c_macro.h
 main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../simple_c_array/Public/simple_c_array_string.h
 main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../simple_c_array/simple_c_array.h
 main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../simple_c_guid/Public/simple_guid.h
 main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../simple_c_guid/simple_c_guid.h
-main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../simple_c_helper_file/Public/simple_file_helper.h
-main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../simple_c_helper_file/simple_c_helper_file.h
-main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../simple_c_string_algorithm/Public/string_algorith.h
-main_core/CMakeFiles/main_core.dir/Private/main_core.obj: ../simple_c_string_algorithm/simple_c_string_algorithm.h
 

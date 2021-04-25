@@ -1,9 +1,9 @@
+
 #include "..\Public\git.h"
 #include <stdio.h>
 #include <direct.h>
-#include "..\..\simple_c_helper_file\simple_c_helper_file.h"
 #include "..\..\simple_c_array\simple_c_array.h"
-//#include "..\..\simple_c_path\simple_c_path.h"
+
 
 char *get_git_project_path()
 {

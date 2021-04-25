@@ -1,7 +1,5 @@
 #include "..\Public\main_core.h"
 #include "..\..\simple_c_array\simple_c_array.h"
-#include "..\..\simple_c_helper_file\simple_c_helper_file.h"
-#include "..\..\simple_c_string_algorithm\simple_c_string_algorithm.h"
 #include <direct.h>
 
 void init_commit(fgit_commit *out_commit)
@@ -34,15 +32,15 @@ void read_user()
             char *tmp = get_string(i, &c_str_sentence);
             if (strstr(tmp, "name="))
             {
-                dismantling_string_by_index(user.name,tmp,"=",1);
+                dismantling_string_by_index(user.name, tmp, "=", 1);
             }
             else if (strstr(tmp, "password="))
             {
-                dismantling_string_by_index(user.name,tmp,"=",1);
+                dismantling_string_by_index(user.name, tmp, "=", 1);
             }
             else if (strstr(tmp, "email="))
             {
-                dismantling_string_by_index(user.name,tmp,"=",1);
+                dismantling_string_by_index(user.name, tmp, "=", 1);
             }
         }
         destroy_string(&c_str_sentence);
@@ -53,15 +51,14 @@ void save_user()
 {
     char *cofg_path_buf = get_git_local_user_filename();
     FILE *p = NULL;
-    if ((p = fopen(cofg_path_buf,"w+"))!=NULL)
+    if ((p = fopen(cofg_path_buf, "w+")) != NULL)
     {
-        fprintf(p,"account=%s\n",user.name);
-        fprintf(p,"password=%s\n",user.password);
-        fprintf(p,"email=%s\n",user.email);
+        fprintf(p, "account=%s\n", user.name);
+        fprintf(p, "password=%s\n", user.password);
+        fprintf(p, "email=%s\n", user.email);
 
         fclose(p);
     }
-    
 }
 
 char *get_git_local_user_filename()
@@ -79,12 +76,12 @@ char *get_git_local_user_filename()
     }
 }
 
-char*get_git_project_remote_url()
+char *get_git_project_remote_url()
 {
     if (git_project_remote_url[0] = '\0')
     {
-        strcpy(git_project_remote_url,git_remote_origin);
-        strcat(git_project_remote_url,"\\git_server");
+        strcpy(git_project_remote_url, git_remote_origin);
+        strcat(git_project_remote_url, "\\git_server");
     }
     return git_project_remote_url;
 }

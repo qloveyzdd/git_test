@@ -2,6 +2,7 @@
 #include "windows.h"
 #include "..\..\simple_c_guid\simple_c_guid.h"
 
+
 const char git_local_cofg_file[MAX_PATH] = "C:\\local_git\\"; //配置文件路径
 
 char git_remote_origin[MAX_PATH] = {0}; //获取远端路径
@@ -16,7 +17,6 @@ typedef struct fgit_user //  用户信息
     char password[MAX_PATH];
     char email[MAX_PATH];
 };
-
 struct fgit_user user;
 
 typedef struct //  提交信息
@@ -27,7 +27,6 @@ typedef struct //  提交信息
     char data[MAX_PATH];
     simple_c_guid guid;
 } fgit_commit;
-
 fgit_commit commit;
 
 void init_commit(fgit_commit *out_commit);
