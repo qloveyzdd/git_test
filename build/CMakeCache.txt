@@ -250,7 +250,7 @@ GIT_TEST_SOURCE_DIR:STATIC=D:/git_test
 LIBRARY_OUTPUT_PATH:PATH=
 
 //Dependencies for the target
-main_core_LIB_DEPENDS:STATIC=general;simple_c_guid;general;simple_c_array;
+main_core_LIB_DEPENDS:STATIC=general;simple_c_guid;general;simple_c_array;general;simple_c_helper_file;
 
 //Dependencies for the target
 simple_c_file_LIB_DEPENDS:STATIC=general;simple_c_string_algorithm;general;simple_c_helper_file;general;simple_c_path;general;main_core;

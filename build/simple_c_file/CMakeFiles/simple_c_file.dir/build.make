@@ -96,9 +96,9 @@ simple_c_file_EXTERNAL_OBJECTS =
 lib/libsimple_c_file.dll: simple_c_file/CMakeFiles/simple_c_file.dir/Private/simple_file.obj
 lib/libsimple_c_file.dll: simple_c_file/CMakeFiles/simple_c_file.dir/build.make
 lib/libsimple_c_file.dll: simple_c_string_algorithm/libsimple_c_string_algorithm.a
-lib/libsimple_c_file.dll: lib/libsimple_c_helper_file.dll.a
 lib/libsimple_c_file.dll: lib/libsimple_c_path.dll.a
 lib/libsimple_c_file.dll: lib/libmain_core.dll.a
+lib/libsimple_c_file.dll: lib/libsimple_c_helper_file.dll.a
 lib/libsimple_c_file.dll: simple_c_file/CMakeFiles/simple_c_file.dir/linklibs.rsp
 lib/libsimple_c_file.dll: simple_c_file/CMakeFiles/simple_c_file.dir/objects1.rsp
 lib/libsimple_c_file.dll: simple_c_file/CMakeFiles/simple_c_file.dir/link.txt

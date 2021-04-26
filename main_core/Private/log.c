@@ -1,6 +1,7 @@
 #include "..\Public\log.h"
 #include <direct.h>
 #include <stdio.h>
+#include "..\Public\git.h"
 
 void get_current_time(char *buf_time, bool cn_zh)
 {

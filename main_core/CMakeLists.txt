@@ -4,7 +4,7 @@ aux_source_directory(./Private main_core) #查找目录下的相关cpp文件
 
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../simple_c_guid)
 link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../simple_c_array)
-
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/../simple_c_helper_file)
 
 add_library(main_core SHARED ${main_core})
 
@@ -13,6 +13,7 @@ add_library(main_core SHARED ${main_core})
 
 target_link_libraries(main_core PRIVATE simple_c_guid)
 target_link_libraries(main_core PRIVATE simple_c_array)
+target_link_libraries(main_core PRIVATE simple_c_helper_file)
 
 
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)

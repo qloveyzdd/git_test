@@ -7,8 +7,6 @@
 #define log_warning(...) log_wirte(GIT_WARNING, __VA_ARGS__)
 #define log_error(...) log_wirte(GIT_ERROR, __VA_ARGS__)
 
-char git_log_path[MAX_PATH] = {0};      //log路径
-
 typedef enum e_error
 {
     GIT_SUCCESS = 0,

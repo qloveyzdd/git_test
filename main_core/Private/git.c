@@ -1,42 +1,13 @@
+#include"..\Public\git.h"
 
-#include "..\Public\git.h"
-#include <stdio.h>
-#include <direct.h>
-#include "..\..\simple_c_array\simple_c_array.h"
+char git_project_path[MAX_PATH] = {0};
 
+const char git_local_cofg_file[MAX_PATH] = "C:\\local_git\\";
 
-char *get_git_project_path()
-{
-    if (git_project_path[0] == '\0')
-    {
-        char buf_project_path[MAX_PATH] = {0};
-        _getcwd(buf_project_path, MAX_PATH - 1);
+char git_remote_origin[MAX_PATH] = {0};
 
-        simple_c_string c_string;
+char gir_local_cofg_filename[MAX_PATH] = {0};
 
-        dismantling_string(buf_project_path, "\\", &c_string);
+char git_project_remote_url[MAX_PATH] = {0};
 
-        char buf_path[MAX_PATH] = {0};
-        for (int i = 0; i < c_string.size; i++)
-        {
-            char *p = get_string(i, &c_string);
-            strcat(buf_path, p);
-            strcat(buf_path, "\\");
-            char buf_tmp[MAX_PATH] = {0};
-            strcpy(buf_tmp, buf_path);
-
-            strcat(buf_tmp, "git\\git.txt");
-            if (_access(buf_tmp, 0) == 0)
-            {
-                strcpy(git_project_path, buf_path);
-                break;
-            }
-        }
-        destroy_string(&c_string);
-        if (git_project_path[0] == '\0')
-        {
-            printf("请先使用git init创建仓库！！");
-        }
-    }
-    return git_project_path;
-}
+char git_log_path[MAX_PATH] = {0};

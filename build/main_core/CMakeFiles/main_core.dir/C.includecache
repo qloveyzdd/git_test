@@ -6,33 +6,31 @@
 
 #IncludeRegexTransform: 
 
-D:/git_test/main_core/Private/git.c
-../Public/git.h
-D:/git_test/main_core/Public/git.h
-stdio.h
--
-direct.h
--
-
 D:/git_test/main_core/Private/main_core.c
 ../Public/main_core.h
 D:/git_test/main_core/Public/main_core.h
-../Public/git.h
-D:/git_test/main_core/Public/git.h
+../../simple_c_array/simple_c_array.h
+D:/git_test/simple_c_array/simple_c_array.h
+../../simple_c_helper_file/simple_c_helper_file.h
+D:/git_test/simple_c_helper_file/simple_c_helper_file.h
 direct.h
 -
 
 D:/git_test/main_core/Public/git.h
 windows.h
 -
-../../simple_c_array/simple_c_array.h
-D:/git_test/simple_c_array/simple_c_array.h
+stdbool.h
+-
+../../simple_c_guid/simple_c_guid.h
+D:/git_test/simple_c_guid/simple_c_guid.h
 
 D:/git_test/main_core/Public/main_core.h
 windows.h
 D:/git_test/main_core/Public/windows.h
 ../../simple_c_guid/simple_c_guid.h
 D:/git_test/simple_c_guid/simple_c_guid.h
+git.h
+D:/git_test/main_core/Public/git.h
 
 D:/git_test/simple_c_array/Public/Core/simple_array_c_macro.h
 assert.h
@@ -55,4 +53,12 @@ stdbool.h
 D:/git_test/simple_c_guid/simple_c_guid.h
 Public/simple_guid.h
 D:/git_test/simple_c_guid/Public/simple_guid.h
+
+D:/git_test/simple_c_helper_file/Public/simple_file_helper.h
+stdbool.h
+-
+
+D:/git_test/simple_c_helper_file/simple_c_helper_file.h
+Public/simple_file_helper.h
+D:/git_test/simple_c_helper_file/Public/simple_file_helper.h
 
